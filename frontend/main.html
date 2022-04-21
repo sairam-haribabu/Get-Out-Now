@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- api gateway generated sdk -->
+        <script src="./sdk/lib/axios/dist/axios.standalone.js"></script>
+        <script src="./sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script src="./sdk/lib/CryptoJS/rollups/sha256.js"></script>
+        <script src="./sdk/lib/CryptoJS/components/hmac.js"></script>
+        <script src="./sdk/lib/CryptoJS/components/enc-base64.js"></script>
+        <script src="./sdk/lib/url-template/url-template.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/utils.js"></script>  
+        <script src="./sdk/apigClient.js"></script> 
+
+        <!-- My script and stylesheet -->
+        <script src="main.js"></script>
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+    <body>
+        <h1> Events </h1>
+        <h3> Search for food, shows and activities </h3>
+        <br>
+        <div id="search-block" class="block">
+            <h2> SEARCH FOR EVENTS</h2>
+            <input type="text" id="keyword" placeholder="enter keyword">
+            <button type="submit" id="search" onclick="searchEvents()"> SEARCH </button>
+        </div>
+        <div id="search-result" class="block">
+        </div>
+    </body>
+</html>
