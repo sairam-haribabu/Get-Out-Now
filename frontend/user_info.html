@@ -1,0 +1,81 @@
+<head>
+    <title> Collect User Information </title>
+</head>
+<body>
+    <form>
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-md-3">
+                Name
+            </div>
+            <div class="col-md-6">
+                <input id = "name" type = "text" placeholder="Name" size = 40>
+            </div>
+            <div class="col-md-3 col-sm-12" id="error_name">
+            </div>
+        </div>
+        <br><br>
+    
+        <div class = "row">
+            <div class = "col-md-3">
+                Username
+            </div>
+            <div class="col-md-6 ">
+                <input id = "username" type = "text" placeholder = "Username" size = 40>
+            </div>
+            <div class="col-md-3 col-sm-12" id="error_username">
+            </div>
+        </div>
+        <br><br>
+    
+        <div class = "row">
+            <div class = "col-md-3">
+                Profile Picture
+            </div>
+            <div class="col-md-6 ">
+                <input id = "image" type = "text" placeholder = "Image path" size = 40>
+            </div>
+            <div class="col-md-3 col-sm-12" id="error_pp">
+            </div>
+        </div>
+        <br><br>
+        <div class = "row">
+            <input type="checkbox" id="sports" name="sports" value="sports">  Sports<br>
+            <input type="checkbox" id="basketball" name="basketball" value="basketball">  basketball<br>
+            <input type="checkbox" id="nba" name="nba" value="nba">  NBA<br>
+            <input type="checkbox" id="music" name="muic" value="muic">  Music<br>
+        </div>
+        <br><br>
+        <input id="submit" type="button" value="Submit" onclick="submit_user_details()">
+    </div>
+    <script>
+        function submit_user_details(){
+            let error = false
+            let name = document.getElementById('name').value
+            let username =  document.getElementById('username').value
+            if (name.length == 0){
+
+                //let er_name = document.createElement("<div class='alert'> ERROR: Name is empty</div>")
+                const ernamediv = document.createElement("div");
+                ernamediv.className = "alert"
+                // and give it some content
+                const error_text = document.createTextNode("ERROR: Name is empty");
+                // add the text node to the newly created div
+                ernamediv.appendChild(error_text);
+                document.getElementById('error_name').appendChild(ernamediv)
+
+              
+                error = true
+            }
+            // if (username.length == 0){
+            //     let er_username = $("<div class='alert'> ERROR: Username is empty</div>")
+            //     $("#error_username").append(er_name)
+            //     error = true
+            // }
+            if (error == false){
+                location.href = 'main.html';
+            }
+        }
+    </script>
+    </form>
+</body>
