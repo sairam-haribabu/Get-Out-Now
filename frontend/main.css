@@ -10,7 +10,7 @@
     background-color: whitesmoke
 }
 
-#upload-block, #search-block {
+#search-block, #result-block, #your-block, #friends-block {
     background-color: #e7e8d1;
     color: #b85042;
     padding: 25px;
@@ -19,7 +19,7 @@
     margin-right: 200px
 }
 
-#search-result {
+#result-block {
     background-color: #e7e8d1;
     color: #b85042;
     margin-left: 200px;
