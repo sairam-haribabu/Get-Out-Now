@@ -55,7 +55,7 @@
         var cognitoUser;
         var idToken;
         var userPool;
-        
+        var newUser = false;
         var poolData = { 
             UserPoolId : userPoolId,
             ClientId : clientId
@@ -89,6 +89,7 @@
             $("#listS3ObjectsButton").hide();
             $("#bucketNameInput").hide();
             $("#logOutButton").hide();
+            newUser = true
         }
 
         function switchToLogInView(){
@@ -120,6 +121,12 @@
             $("#bucketNameInput").show();
             $("#logOutButton").show();
             location.href = '../frontend/user_info.html';
+            if(newUser) {
+                location.href = '../frontend/user_info.html';
+            } else {
+                location.href = '../frontend/main.html';
+            }
+            newUser = false
         }
 
         function clearLogs(){

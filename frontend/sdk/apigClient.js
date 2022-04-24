@@ -119,13 +119,13 @@ apigClientFactory.newClient = function (config) {
     };
     
     
-    apigClient.userinfoPut = function (params, body, additionalParams) {
+    apigClient.userinfoGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, ['username', 'name', 'bio'], ['body']);
         
-        var userinfoPutRequest = {
-            verb: 'put'.toUpperCase(),
+        var userinfoGetRequest = {
+            verb: 'get'.toUpperCase(),
             path: pathComponent + uritemplate('/userinfo').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, ['username', 'name', 'bio']),
@@ -133,7 +133,7 @@ apigClientFactory.newClient = function (config) {
         };
         
         
-        return apiGatewayClient.makeRequest(userinfoPutRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(userinfoGetRequest, authType, additionalParams, config.apiKey);
     };
     
     
