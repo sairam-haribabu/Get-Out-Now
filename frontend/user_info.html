@@ -1,81 +1,33 @@
-<head>
-    <title> Collect User Information </title>
-</head>
-<body>
-    <form>
-    <div class = "container">
-        <div class = "row">
-            <div class = "col-md-3">
-                Name
-            </div>
-            <div class="col-md-6">
-                <input id = "name" type = "text" placeholder="Name" size = 40>
-            </div>
-            <div class="col-md-3 col-sm-12" id="error_name">
-            </div>
-        </div>
-        <br><br>
-    
-        <div class = "row">
-            <div class = "col-md-3">
-                Username
-            </div>
-            <div class="col-md-6 ">
-                <input id = "username" type = "text" placeholder = "Username" size = 40>
-            </div>
-            <div class="col-md-3 col-sm-12" id="error_username">
-            </div>
-        </div>
-        <br><br>
-    
-        <div class = "row">
-            <div class = "col-md-3">
-                Profile Picture
-            </div>
-            <div class="col-md-6 ">
-                <input id = "image" type = "text" placeholder = "Image path" size = 40>
-            </div>
-            <div class="col-md-3 col-sm-12" id="error_pp">
-            </div>
-        </div>
-        <br><br>
-        <div class = "row">
-            <input type="checkbox" id="sports" name="sports" value="sports">  Sports<br>
-            <input type="checkbox" id="basketball" name="basketball" value="basketball">  basketball<br>
-            <input type="checkbox" id="nba" name="nba" value="nba">  NBA<br>
-            <input type="checkbox" id="music" name="muic" value="muic">  Music<br>
-        </div>
-        <br><br>
-        <input id="submit" type="button" value="Submit" onclick="submit_user_details()">
-    </div>
-    <script>
-        function submit_user_details(){
-            let error = false
-            let name = document.getElementById('name').value
-            let username =  document.getElementById('username').value
-            if (name.length == 0){
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="./sdk/lib/axios/dist/axios.standalone.js"></script>
+        <script src="./sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script src="./sdk/lib/CryptoJS/rollups/sha256.js"></script>
+        <script src="./sdk/lib/CryptoJS/components/hmac.js"></script>
+        <script src="./sdk/lib/CryptoJS/components/enc-base64.js"></script>
+        <script src="./sdk/lib/url-template/url-template.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/utils.js"></script>  
+        <script src="./sdk/apigClient.js"></script> 
 
-                //let er_name = document.createElement("<div class='alert'> ERROR: Name is empty</div>")
-                const ernamediv = document.createElement("div");
-                ernamediv.className = "alert"
-                // and give it some content
-                const error_text = document.createTextNode("ERROR: Name is empty");
-                // add the text node to the newly created div
-                ernamediv.appendChild(error_text);
-                document.getElementById('error_name').appendChild(ernamediv)
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
-              
-                error = true
-            }
-            // if (username.length == 0){
-            //     let er_username = $("<div class='alert'> ERROR: Username is empty</div>")
-            //     $("#error_username").append(er_name)
-            //     error = true
-            // }
-            if (error == false){
-                location.href = 'main.html';
-            }
-        }
-    </script>
-    </form>
-</body>
+        <script src="user_info.js"></script>
+        <title> Collect User Information </title>
+    </head>
+    <body>
+        <div class = "container">
+            <input type="text" id="username" placeholder="enter username">
+            <br>
+            <input type="text" id="name" placeholder="enter name">
+            <br>
+            <input type="text" id="bio" placeholder="enter bio">
+            <br>
+            <input type="submit" id="search" onclick="submitUserData()" value="SUBMIT"> </input>
+        </div>
+    </body>
+</html>
