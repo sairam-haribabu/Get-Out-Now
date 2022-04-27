@@ -1,5 +1,10 @@
 var sdk = apigClientFactory.newClient();
 
+function myProfile() {
+    localStorage.setItem('friendusername', "")
+    location.href = './profile.html';
+}
+
 function searchEvents() {
     keyword = document.getElementById('keyword').value;
     console.log(keyword)
@@ -26,10 +31,4 @@ function searchEvents() {
     .catch((error) => {
         console.log('an error occurred', error);
     });
-}
-
-
-function myProfile() {
-    localStorage.setItem('friendusername', "")
-    location.href = './profile.html';
 }

@@ -1,5 +1,5 @@
 body {
-    margin-top: 70px;
+    /* margin-top: 70px; */
     background-color: #710193;
     color:white
 }
@@ -20,7 +20,9 @@ body {
     font-size: 20px;
     font-weight: 400;
 }
-
+#follow-block {
+    float: right;
+}
 
 
 /* Event  */
