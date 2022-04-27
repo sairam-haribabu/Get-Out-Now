@@ -125,6 +125,10 @@
                 location.href = '../frontend/user_info.html';
             } else {
                 location.href = '../frontend/main.html';
+                if(localStorage.getItem('username') == null) {
+                    localStorage.setItem('username', $('#userNameInput').val());
+                    console.log("LOCAL", localStorage.getItem('username'))
+                }
             }
             newUser = false
         }

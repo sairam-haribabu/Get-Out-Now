@@ -27,3 +27,8 @@ function searchEvents() {
         console.log('an error occurred', error);
     });
 }
+
+
+function myProfile() {
+    location.href = './profile.html';
+}
