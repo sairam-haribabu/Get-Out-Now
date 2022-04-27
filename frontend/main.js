@@ -2,6 +2,7 @@ var sdk = apigClientFactory.newClient();
 
 window.onload = searchEvents();
 
+
 function searchEvents() {
     keywordEl = document.getElementById('keyword');
     if (keywordEl == null) {
@@ -86,4 +87,5 @@ function myProfile() {
 function show_event(id) {
     localStorage.setItem('event-id', id);
     location.href = './event.html';
+
 }
