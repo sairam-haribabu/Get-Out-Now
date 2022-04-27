@@ -1,19 +1,29 @@
 var sdk = apigClientFactory.newClient();
 
+window.onload = searchEvents();
+
 function searchEvents() {
-    keyword = document.getElementById('keyword').value;
-    console.log(keyword)
+    keywordEl = document.getElementById('keyword');
+    if (keywordEl == null) {
+        keyword = "";
+    } else {
+        keyword = document.getElementById('keyword').value;
+    }
     // user is searching for event name, date, categories, or location
     sdk.searchGet({'query':keyword}, {}, {}).then((response) => {
         document.getElementById('keyword').value = ""; // clearing search for next search
 
-        response = response['data']['body']
+        response = response['data']['body']['events'];
+        console.log(response);
 
         // getting div that holds row of events
         var allEventsDiv = document.getElementById('events-block');
+        allEventsDiv.innerHTML = '';
         
         for (let key in response) {
-            allEventsDiv.appendChild(document.createTextNode("Search results based on " + key + "!!!!!!!!!!!!"));
+            if (key != 'all') {
+                allEventsDiv.appendChild(document.createTextNode("Search results based on " + key + "!!!!!!!!!!!!"));
+            }
             
             var i = 0; // used to limit how many elements in each row
             // creating first row that the events will be placed
@@ -22,6 +32,8 @@ function searchEvents() {
             allEventsDiv.appendChild(eventsRow);
 
             for (let idx in response[key]) {
+                print(idx)
+                print(response[key][idx])
                 if (i == 3) {
                     // creates a division between the last row & this row
                     div = document.createElement("div");
@@ -36,13 +48,10 @@ function searchEvents() {
     
                 // creating column within row
                 let eventCol = document.createElement("div");
+                eventCol.id = event["id"]; // link for event connects to event id
                 eventCol.classList.add("col");
+                eventCol.onclick = function(){show_event(eventCol.id)};
                 eventsRow.appendChild(eventCol);
-    
-                // link for event connects to event id
-                let eventClickableObj = document.createElement("a");
-                eventClickableObj.id = event["id"]; 
-                eventCol.appendChild(eventClickableObj);
     
                 // event image
                 let eventImg = document.createElement("img");
@@ -72,4 +81,9 @@ function searchEvents() {
 function myProfile() {
     localStorage.setItem('friendusername', "")
     location.href = './profile.html';
+}
+
+function show_event(id) {
+    localStorage.setItem('event-id', id);
+    location.href = './event.html';
 }

@@ -69,5 +69,6 @@ function showEvents() {
 }
 
 window.onload = function() {
+    event_id = localStorage.getItem('event-id');
     showEvents()
   };
