@@ -67,3 +67,9 @@ function searchEvents() {
         console.log('an error occurred', error);
     });
 }
+
+
+function myProfile() {
+    localStorage.setItem('friendusername', "")
+    location.href = './profile.html';
+}

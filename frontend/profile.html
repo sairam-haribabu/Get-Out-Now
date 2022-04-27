@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- api gateway generated sdk -->
+        <script src="./sdk/lib/axios/dist/axios.standalone.js"></script>
+        <script src="./sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script src="./sdk/lib/CryptoJS/rollups/sha256.js"></script>
+        <script src="./sdk/lib/CryptoJS/components/hmac.js"></script>
+        <script src="./sdk/lib/CryptoJS/components/enc-base64.js"></script>
+        <script src="./sdk/lib/url-template/url-template.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script src="./sdk/lib/apiGatewayCore/utils.js"></script>  
+        <script src="./sdk/apigClient.js"></script> 
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!-- My script and stylesheet -->
+        <script src="profile.js"></script>
+        <link rel="stylesheet" href="profile.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <div id="user-block" class="block">
+                <div id="username">
+                </div>
+                <div id="name">
+                </div>
+                <br>
+                <div id="bio">
+                </div>
+            </div>
+            <div id="events-block" class="block">
+                <h4> Upcoming Events For You </h4>
+                <br>
+                <div class="event">
+                    <div class="event-image">
+                        <img src="./boston.jpg">
+                    </div>
+                    <div class="event-name">
+                        Event 1
+                    </div>
+                </div>
+                <div class="event">
+                    <div class="event-image">
+                        <img src="./boston.jpg">
+                    </div>
+                    <div class="event-name">
+                        Event 2
+                    </div>
+                </div>
+                <div class="event">
+                    <div class="event-image">
+                        <img src="./boston.jpg">
+                    </div>
+                    <div class="event-name">
+                        Event 3
+                    </div>
+                </div>
+            </div>
+            <div id="friends-block" class="block">
+                <h4> Your Friends </h4>
+            </div>
+        </div>
+    </body>
+</html>

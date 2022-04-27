@@ -1,0 +1,56 @@
+body {
+    margin-top: 70px;
+    background-color: #710193;
+    color:white
+}
+
+.block {
+    margin: 30px;
+    background-color: #710193;
+    padding: 20px;
+}
+
+/* User Data */
+#username {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+#name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+
+
+/* Event  */
+.event {
+    background-color: #E9CFEC;
+    display: inline-block;
+    margin-right: 30px;
+    padding: 10px;
+    color: #583759;
+}
+
+.event-name {
+    margin-top: 10px;
+    text-align: center;
+}
+img {
+    height: 100px;
+    width: 140px;
+}
+
+/* Friend */
+.friend {
+    background-color: #E9CFEC;
+    display: inline-block;
+    margin-right: 30px;
+    padding: 10px;
+    color: #583759;
+}
+
+.friend-name {
+    margin-top: 10px;
+    text-align: center;
+}

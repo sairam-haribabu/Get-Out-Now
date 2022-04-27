@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/stage';
+    var invokeUrl = 'https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/dev';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -81,6 +81,42 @@ apigClientFactory.newClient = function (config) {
 
     var apiGatewayClient = apiGateway.core.apiGatewayClientFactory.newClient(simpleHttpClientConfig, sigV4ClientConfig);
     
+    
+    
+    apigClient.profileGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['username'], ['body']);
+        
+        var profileGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/profile').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['username']),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(profileGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.profileOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var profileOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/profile').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(profileOptionsRequest, authType, additionalParams, config.apiKey);
+    };
     
     
     apigClient.searchGet = function (params, body, additionalParams) {
