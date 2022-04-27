@@ -30,5 +30,6 @@ function searchEvents() {
 
 
 function myProfile() {
+    localStorage.setItem('friendusername', "")
     location.href = './profile.html';
 }
