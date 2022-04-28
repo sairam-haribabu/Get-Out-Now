@@ -120,14 +120,14 @@
             $("#listS3ObjectsButton").show();
             $("#bucketNameInput").show();
             $("#logOutButton").show();
-            location.href = '../frontend/user_info.html';
+            
+            if(localStorage.getItem('username') == null) {
+                localStorage.setItem('username', $('#userNameInput').val());
+            }
+            console.log("LOCAL", localStorage.getItem('username'))
             if(newUser) {
                 location.href = '../frontend/user_info.html';
             } else {
-                if(localStorage.getItem('username') == null) {
-                    localStorage.setItem('username', $('#userNameInput').val());
-                }
-                console.log("LOCAL", localStorage.getItem('username'))
                 location.href = '../frontend/main.html';
             }
             newUser = false

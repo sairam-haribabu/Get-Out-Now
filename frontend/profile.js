@@ -10,6 +10,11 @@ function myProfile() {
     location.href = './profile.html';
 }
 
+function logOut() {
+    document.getElementById("logOutButton").click();
+    location.href = '../login/index.html';
+}
+
 function followFriend(me, friend) {
     // sdk.followGet({'username':me, 'friendName':friend}, {}, {}).then((response) => {
     //     if(response) {
@@ -36,17 +41,20 @@ $(document).ready(function() {
         let div = $("<button type='submit' id='follow' onclick='followFriend(\"" + me + "\", \"" + username + "\")'> FOLLOWING </button>")
         $("#follow-block").append(div)
     }
+    console.log(localStorage.getItem('username'))
+    console.log(localStorage.getItem('friendusername'))
+
     sdk.profileGet({'username':username}, {}, {}).then((response) => {
         response = response['data']['body']
         console.log(response, username, response['name'])
         $("#username").text(username)
         $("#name").text(response['name'])
         $("#bio").text(response['bio'])
-        let image = $("<img src = '" + "https://ccbduserphotobucket.s3.amazonaws.com/" + username + ".jpg'>")
+        let image = $("<img src = '" + "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + username + ".jpeg'>")
         $("#dp").append(image)
         for(i in response['friends']) {
             let div = $("<div class='friend'> <div/>")
-            let imgsrc = "https://ccbduserphotobucket.s3.amazonaws.com/" + response['friends'][i] + ".jpg"
+            let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + response['friends'][i] + ".jpeg"
             let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "'>  <div/>")
             $(div).append(divImage)
             let divName = $("<div class='friend-name' onclick='friendProfile(\"" + response['friends'][i] + "\")'>" + response['friends'][i] +  "</a> <div/>")

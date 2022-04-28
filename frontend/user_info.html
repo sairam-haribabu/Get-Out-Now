@@ -13,23 +13,30 @@
         <script src="./sdk/lib/apiGatewayCore/utils.js"></script>  
         <script src="./sdk/apigClient.js"></script> 
 
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <script src="user_info.js"></script>
+        <link rel="stylesheet" href="user_info.css">
         <title> Collect User Information </title>
     </head>
     <body>
         <div class = "container">
-            <input type="text" id="username" placeholder="enter username">
+            <div class="heading"> ENTER USER PROFILE INFORMATION </div>
+            <br>
+            <input type="text" id="username" placeholder="enter username" readonly>
             <br>
             <input type="text" id="name" placeholder="enter name">
             <br>
-            <input type="text" id="bio" placeholder="enter bio">
+            <input type="textarea" id="bio" placeholder="enter bio">
             <br>
             <input type="file" id="dp" placeholder="upload a profile picture">
             <br>
-            <input type="submit" id="search" onclick="submitUserData()" value="SUBMIT"> </input>
+            <button type="submit" id="search" onclick="submitUserData()"> SUBMIT </button>
         </div>
     </body>
 </html>
