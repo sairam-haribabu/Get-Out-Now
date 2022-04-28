@@ -33,8 +33,7 @@ function searchEvents() {
             allEventsDiv.appendChild(eventsRow);
 
             for (let idx in response[key]) {
-                print(idx)
-                print(response[key][idx])
+                
                 if (i == 3) {
                     // creates a division between the last row & this row
                     div = document.createElement("div");
