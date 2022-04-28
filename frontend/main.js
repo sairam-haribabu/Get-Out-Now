@@ -85,12 +85,7 @@ function searchEvents() {
             eventsRow.classList.add("row");
             allDisplayDiv.appendChild(eventsRow);
 
-<<<<<<< HEAD
-            for (let idx in response[key]) {
-                
-=======
             for (let idx in events[key]) {
->>>>>>> 108cd5cc61ed91e8dfe5ce18cf5d758a3e3c08dc
                 if (i == 3) {
                     // creates a division between the last row & this row
                     div = document.createElement("div");
