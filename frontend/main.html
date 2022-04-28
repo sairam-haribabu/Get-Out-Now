@@ -13,6 +13,10 @@
         <script src="./sdk/lib/apiGatewayCore/utils.js"></script>  
         <script src="./sdk/apigClient.js"></script> 
         
+        <script src="../login/script/aws-sdk-2.487.0.min.js"></script>
+        <script src="../login/script/aws-cognito-sdk.min.js"></script>
+        <script src="../login/script/amazon-cognito-identity.min.js"></script>
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -24,8 +28,9 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="./main.html">HOME</a>
+                <a class="navbar-brand" href="./friends_events.html">FRIENDS' EVENTS</a>
                 <div class="navbar-brand" onclick="myProfile()"> MY PROFILE </div>
-                <div class="navbar-brand" onclick="logOut()"> LOGOUT </a>
+                <div class="navbar-brand" onclick="logOut()"> Log Out </div>
             </div>
         </nav>
         <div class="container">
@@ -37,7 +42,7 @@
                 <input type="text" id="keyword" placeholder="enter keyword">
                 <button type="submit" id="search" onclick="searchEvents()"> SEARCH </button>
             </div>
-            <div id="events-block", class="block">
+            <div id="display-block", class="block">
             </div>
         </div>
     </body>

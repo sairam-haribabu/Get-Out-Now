@@ -2,7 +2,23 @@ var sdk = apigClientFactory.newClient();
 
 window.onload = searchEvents();
 
+function logOut(){
+    var userPoolId = 'us-east-1_fvK1OHbeR';
+    var clientId = '543gs8p8cujqb4oe90gs88io3l';
+   
+    var poolData = { 
+        UserPoolId : userPoolId,
+        ClientId : clientId
+    };
 
+    userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    cognitoUser = userPool.getCurrentUser();
+    
+    if (cognitoUser){
+        cognitoUser.signOut();
+        location.href = '../login/index.html';
+    }
+}
 function searchEvents() {
     keywordEl = document.getElementById('keyword');
     if (keywordEl == null) {
@@ -14,25 +30,79 @@ function searchEvents() {
     sdk.searchGet({'query':keyword}, {}, {}).then((response) => {
         document.getElementById('keyword').value = ""; // clearing search for next search
 
-        response = response['data']['body']['events'];
+        response = response['data']['body'];
         console.log(response);
 
-        // getting div that holds row of events
-        var allEventsDiv = document.getElementById('events-block');
-        allEventsDiv.innerHTML = '';
+        // getting div that holds row of users
+        var allDisplayDiv = document.getElementById('display-block');
+        allDisplayDiv.innerHTML = '';
+
+        // DISPLAYING USERS
+        users = response['users']
+        console.log(users.length)
+        if (users.length > 0) {
+            allDisplayDiv.appendChild(document.createTextNode("Search results based on user"));
         
-        for (let key in response) {
+            for (let idx in users) {
+                var i = 0; // used to limit how many elements in each row
+                // creating first row that the users will be placed
+                var usersRow = document.createElement("div");
+                usersRow.classList.add("row");
+                allDisplayDiv.appendChild(usersRow);
+
+                if (i == 3) {
+                    // creates a division between the last row & this row
+                    div = document.createElement("div");
+                    div.classList.add("w-100");
+                    usersRow.appendChild(div);
+
+                    // new usersRow
+                    i = 0;
+                }
+
+                let user = users[idx]["data"];
+                let username = users[idx]["username"];
+
+                // creating column within row
+                let userCol = document.createElement("div");
+                userCol.classList.add("col");
+                usersRow.appendChild(userCol);
+                
+                // user image
+                let userImg = document.createElement("img");
+                userImg.id = username; // link for user connects to user id
+                userImg.src = "https://ccbduserphotobucket.s3.amazonaws.com/" + username + ".jpg";
+                userImg.onclick = function(){friendsProfile(userImg.id)};
+                userCol.appendChild(userImg)
+                userCol.appendChild(document.createElement("br"));
+
+                // user name -- only keep first 32 characters of name
+                let name = user["name"];
+                if (name.length > 32) {
+                    name = name.substring(0, 32) + "...";
+                }
+                let userName = document.createTextNode(name);
+                userCol.appendChild(userName);  
+
+                i++;
+            }
+        }
+        
+        // DISPLAYING EVENTS
+        events = response['events'];
+        for (let key in events) {
             if (key != 'all') {
-                allEventsDiv.appendChild(document.createTextNode("Search results based on " + key + "!!!!!!!!!!!!"));
+                allDisplayDiv.appendChild(document.createTextNode("Search results based on " + key + "!!!!!!!!!!!!"));
             }
             
             var i = 0; // used to limit how many elements in each row
             // creating first row that the events will be placed
             var eventsRow = document.createElement("div");
             eventsRow.classList.add("row");
-            allEventsDiv.appendChild(eventsRow);
+            allDisplayDiv.appendChild(eventsRow);
 
-            for (let idx in response[key]) {
+
+            for (let idx in events[key]) {
                 if (i == 3) {
                     // creates a division between the last row & this row
                     div = document.createElement("div");
@@ -43,25 +113,25 @@ function searchEvents() {
                     i = 0;
                 }
 
-                let event = response[key][idx];
+                let event = events[key][idx];
     
                 // creating column within row
                 let eventCol = document.createElement("div");
-                eventCol.id = event["id"]; // link for event connects to event id
                 eventCol.classList.add("col");
-                eventCol.onclick = function(){show_event(eventCol.id)};
                 eventsRow.appendChild(eventCol);
-    
+                
                 // event image
                 let eventImg = document.createElement("img");
+                eventImg.id = event["id"]; // link for event connects to event id
                 eventImg.src = event["image"];
+                eventImg.onclick = function(){show_event(eventImg.id)};
                 eventCol.appendChild(eventImg)
                 eventCol.appendChild(document.createElement("br"));
     
                 // event name -- only keep first 32 characters of name
                 let name = event["name"];
-                if (event["name"].length > 32) {
-                    name = event["name"].substring(0, 32) + "...";
+                if (name.length > 32) {
+                    name = name.substring(0, 32) + "...";
                 }
                 let eventName = document.createTextNode(name);
                 eventCol.appendChild(eventName);  
@@ -78,7 +148,12 @@ function searchEvents() {
 
 
 function myProfile() {
-    localStorage.setItem('friendusername', "")
+    localStorage.setItem('friendusername', "");
+    location.href = './profile.html';
+}
+
+function friendsProfile(username) {
+    localStorage.setItem('friendusername', username);
     location.href = './profile.html';
 }
 
@@ -86,8 +161,4 @@ function show_event(id) {
     localStorage.setItem('event-id', id);
     location.href = './event.html';
 
-}
-
-function logOut() {
-    location.href = '../login/index.html';
 }
