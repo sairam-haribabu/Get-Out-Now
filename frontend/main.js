@@ -13,7 +13,7 @@ function searchEvents() {
         document.getElementById('keyword').value = ""; // clearing search for next search
 
         response = response['data']['body']
-
+        console.log(response)
         // getting div that holds row of events
         var allEventsDiv = document.getElementById('events-block');
         
