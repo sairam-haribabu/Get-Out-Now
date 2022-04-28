@@ -56,7 +56,7 @@ function searchEvents() {
                 let userImg = document.createElement("img");
                 userImg.id = username; // link for user connects to user id
                 userImg.src = "https://ccbduserphotobucket.s3.amazonaws.com/" + username + ".jpg";
-                userImg.onclick = function(){show_user(userImg.id)};
+                userImg.onclick = function(){friendsProfile(userImg.id)};
                 userCol.appendChild(userImg)
                 userCol.appendChild(document.createElement("br"));
 
@@ -132,6 +132,11 @@ function searchEvents() {
 
 function myProfile() {
     localStorage.setItem('friendusername', "");
+    location.href = './profile.html';
+}
+
+function friendsProfile(username) {
+    localStorage.setItem('friendusername', username);
     location.href = './profile.html';
 }
 
