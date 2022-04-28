@@ -42,9 +42,12 @@ $(document).ready(function() {
         $("#username").text(username)
         $("#name").text(response['name'])
         $("#bio").text(response['bio'])
+        let image = $("<img src = '" + "https://ccbduserphotobucket.s3.amazonaws.com/" + username + ".jpg'>")
+        $("#dp").append(image)
         for(i in response['friends']) {
             let div = $("<div class='friend'> <div/>")
-            let divImage = $("<div class='friend-image'> <img src = './boston.jpg'> <div/>")
+            let imgsrc = "https://ccbduserphotobucket.s3.amazonaws.com/" + response['friends'][i] + ".jpg"
+            let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "'>  <div/>")
             $(div).append(divImage)
             let divName = $("<div class='friend-name' onclick='friendProfile(\"" + response['friends'][i] + "\")'>" + response['friends'][i] +  "</a> <div/>")
             $(div).append(divName)
