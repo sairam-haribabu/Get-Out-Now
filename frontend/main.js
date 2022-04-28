@@ -2,7 +2,23 @@ var sdk = apigClientFactory.newClient();
 
 window.onload = searchEvents();
 
+function logout(){
+    var userPoolId = 'us-east-1_fvK1OHbeR';
+    var clientId = '543gs8p8cujqb4oe90gs88io3l';
+   
+    var poolData = { 
+        UserPoolId : userPoolId,
+        ClientId : clientId
+    };
 
+    userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    cognitoUser = userPool.getCurrentUser();
+    
+    if (cognitoUser){
+        cognitoUser.signOut();
+        location.href = '../login/index.html';
+    }
+}
 function searchEvents() {
     keywordEl = document.getElementById('keyword');
     if (keywordEl == null) {

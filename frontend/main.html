@@ -13,6 +13,10 @@
         <script src="./sdk/lib/apiGatewayCore/utils.js"></script>  
         <script src="./sdk/apigClient.js"></script> 
         
+        <script src="../login/script/aws-sdk-2.487.0.min.js"></script>
+        <script src="../login/script/aws-cognito-sdk.min.js"></script>
+        <script src="../login/script/amazon-cognito-identity.min.js"></script>
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -26,6 +30,7 @@
                 <a class="navbar-brand" href="./main.html">HOME</a>
                 <a class="navbar-brand" href="./friends_events.html">FRIENDS' EVENTS</a>
                 <div class="navbar-brand" onclick="myProfile()"> MY PROFILE </div>
+                <div class="navbar-brand" onclick="logout()"> Log Out </div>
             </div>
         </nav>
         <div class="container">
