@@ -5,7 +5,7 @@ window.onload = searchEvents();
 function logOut(){
     var userPoolId = 'us-east-1_fvK1OHbeR';
     var clientId = '543gs8p8cujqb4oe90gs88io3l';
-   
+   console.log("here")
     var poolData = { 
         UserPoolId : userPoolId,
         ClientId : clientId
@@ -13,7 +13,7 @@ function logOut(){
 
     userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
     cognitoUser = userPool.getCurrentUser();
-    
+    console.log(cognitoUser);
     if (cognitoUser){
         cognitoUser.signOut();
         location.href = '../login/index.html';
