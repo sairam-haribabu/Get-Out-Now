@@ -10,7 +10,8 @@ function uploadPhoto(data, username){
         }
     });
     xhr.withCredentials = false;
-    let urlcreate="https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/alpha/uploaddp/" + username + ".jpeg";
+    console.log(username+data.type);
+    let urlcreate="https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/dev/uploaddp/" + dp['name'];
 
     xhr.open("PUT", urlcreate);
     xhr.setRequestHeader("Content-Type", data.type);
@@ -23,9 +24,10 @@ function submitUserData() {
     namee = document.getElementById('name').value;
     bio = document.getElementById('bio').value;
     dp = document.getElementById('dp').files[0];
-
+    console.log(dp['name'])
     uploadPhoto(dp, username)
-    sdk.userinfoGet({"bio":bio, "name":namee, "username":username}, {}, {}).then((response) => {
+    console.log("B")
+    sdk.userinfoGet({"bio":bio, "name":namee, "username":username,"photo":dp['name']}, {}, {}).then((response) => {
         console.log(response)
         if(response) {
             location.href = './main.html';
