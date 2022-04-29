@@ -24,7 +24,6 @@ body {
     float: right;
 }
 
-
 /* Event  */
 .event {
     background-color: #E9CFEC;
@@ -55,4 +54,8 @@ img {
 .friend-name {
     margin-top: 10px;
     text-align: center;
+}
+
+i {
+    font-size: 40px !important;
 }

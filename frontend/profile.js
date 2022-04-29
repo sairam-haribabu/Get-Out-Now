@@ -1,5 +1,23 @@
 var sdk = apigClientFactory.newClient();
 
+function logOut(){
+    localStorage.setItem("username") = ""
+    localStorage.setItem("friendusername") = ""
+    var userPoolId = 'us-east-1_fvK1OHbeR';
+    var clientId = '543gs8p8cujqb4oe90gs88io3l';
+    var poolData = { 
+        UserPoolId : userPoolId,
+        ClientId : clientId
+    };
+    userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+    cognitoUser = userPool.getCurrentUser();
+    if (cognitoUser){
+        cognitoUser.signOut();
+        location.href = '../login/index.html';
+    }
+    localStorage.setItem("username") = ""
+}
+
 function friendProfile(friendName) {
     localStorage.setItem('friendusername', friendName);
     location.href = './profile.html';
@@ -8,11 +26,6 @@ function friendProfile(friendName) {
 function myProfile() {
     localStorage.setItem('friendusername', "")
     location.href = './profile.html';
-}
-
-function logOut() {
-    document.getElementById("logOutButton").click();
-    location.href = '../login/index.html';
 }
 
 function followFriend(me, friend) {
@@ -46,12 +59,13 @@ $(document).ready(function() {
 
     sdk.profileGet({'username':username}, {}, {}).then((response) => {
         response = response['data']['body']
-        console.log(response, username, response['name'])
+        console.log(response)
         $("#username").text(username)
         $("#name").text(response['name'])
         $("#bio").text(response['bio'])
-        let image = $("<img src = '" + "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + username + ".jpeg'>")
+        let image = $("<img src = '" + "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + username + ".jpg'>")
         $("#dp").append(image)
+        
         for(i in response['friends']) {
             let div = $("<div class='friend'> <div/>")
             let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + response['friends'][i] + ".jpeg"
@@ -60,6 +74,16 @@ $(document).ready(function() {
             let divName = $("<div class='friend-name' onclick='friendProfile(\"" + response['friends'][i] + "\")'>" + response['friends'][i] +  "</a> <div/>")
             $(div).append(divName)
             $("#friends-block").append(div)
+        }
+
+        for(i in response['events']) {
+            let div = $("<div class='event'> <div/>")
+            let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + response['events'][i]
+            let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "'>  <div/>")
+            $(div).append(divImage)
+            let divName = $("<div class='event-name' onclick='eventPage(\"" + response['events'][i] + "\")'>" + response['eventsAttending'][i] +  "</a> <div/>")
+            $(div).append(divName)
+            $("#events-block").append(div)
         }
     })
     .catch((error) => {

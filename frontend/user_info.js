@@ -1,8 +1,8 @@
 var sdk = apigClientFactory.newClient();
 
+
 function uploadPhoto(data, username){
     let xhr = new XMLHttpRequest();
-
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === 4) {
@@ -17,6 +17,7 @@ function uploadPhoto(data, username){
     xhr.send(data);
 }
 
+
 function submitUserData() {
     username = document.getElementById('username').value;
     namee = document.getElementById('name').value;
@@ -24,8 +25,6 @@ function submitUserData() {
     dp = document.getElementById('dp').files[0];
 
     uploadPhoto(dp, username)
-
-    console.log("B")
     sdk.userinfoGet({"bio":bio, "name":namee, "username":username}, {}, {}).then((response) => {
         console.log(response)
         if(response) {
