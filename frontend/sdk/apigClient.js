@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/stage';
+    var invokeUrl = 'https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/echo';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -81,6 +81,42 @@ apigClientFactory.newClient = function (config) {
 
     var apiGatewayClient = apiGateway.core.apiGatewayClientFactory.newClient(simpleHttpClientConfig, sigV4ClientConfig);
     
+    
+    
+    apigClient.eventGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['eventid'], ['body']);
+        
+        var eventGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/event').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['eventid']),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(eventGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.eventOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var eventOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/event').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(eventOptionsRequest, authType, additionalParams, config.apiKey);
+    };
     
     
     apigClient.followGet = function (params, body, additionalParams) {
@@ -116,6 +152,42 @@ apigClientFactory.newClient = function (config) {
         
         
         return apiGatewayClient.makeRequest(followOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.friendseventsGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['username'], ['body']);
+        
+        var friendseventsGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/friendsevents').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['username']),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(friendseventsGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.friendseventsOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var friendseventsOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/friendsevents').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(friendseventsOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
@@ -188,6 +260,42 @@ apigClientFactory.newClient = function (config) {
         
         
         return apiGatewayClient.makeRequest(searchOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.uploaddpItemPut = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['item', 'Content-Type'], ['body']);
+        
+        var uploaddpItemPutRequest = {
+            verb: 'put'.toUpperCase(),
+            path: pathComponent + uritemplate('/uploaddp/{item}').expand(apiGateway.core.utils.parseParametersToObject(params, ['item', ])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(uploaddpItemPutRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.uploaddpItemOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var uploaddpItemOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/uploaddp/{item}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(uploaddpItemOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
