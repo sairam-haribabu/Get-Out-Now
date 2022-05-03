@@ -1,0 +1,24 @@
+.heading {
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input, button {
+    margin: 10px;
+    width: 500px;
+}
+
+.container {
+    background-color: #f5f0e1;
+    margin: auto;
+    margin-top: 100px;
+    padding: 50px;
+    text-align: center;
+    width: 800px;
+    color: #1e3d59;
+    border: 10px solid #ffc13b;
+}
+
+#bio {
+    height: 100px;
+}

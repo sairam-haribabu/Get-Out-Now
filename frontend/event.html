@@ -13,26 +13,39 @@
         <script src="./sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
         <script src="./sdk/lib/apiGatewayCore/utils.js"></script>  
         <script src="./sdk/apigClient.js"></script> 
+
+        <!-- jquery -->
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
         <!-- My script and stylesheet -->
         <script src="event.js"></script>
-        <!-- <link rel="stylesheet" href="event.css"> -->
+        <link rel="stylesheet" href="event.css">
     </head>
 
     <body>
-        <div id="image-block" class="block">
+        <div id="image-block" class="eventImage">
         </div>
         <div id="name-block" class="block">
+            <b> Event Name:</b>
+            <br>
         </div>
         <div id="details-block" class="block">
+            <b> Location:</b>
+            <br>
         </div>
         <div id="friends-block" class="block">
+            <b> Friends Attending</b>
+            <br>
         </div>
         <div id="tags-block" class="block">
         </div>
+        <br><br>
+        <input type="submit" class="attend" name="attend" value="Attend Event">
     </body>
 </html>
 

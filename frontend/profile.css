@@ -1,58 +1,58 @@
 body {
-    /* margin-top: 70px; */
-    background-color: #710193;
-    color:white
-}
-
-.block {
-    margin: 30px;
-    background-color: #710193;
-    padding: 20px;
+    background-color: white;
+    color: black
 }
 
 /* User Data */
 #username {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 600;
 }
 
 #name {
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 400;
 }
-#follow-block {
-    float: right;
-}
 
+#bio {
+    font-size: 28px;
+    font-weight: 400;
+}
 
 /* Event  */
-.event {
-    background-color: #E9CFEC;
+.event, .friend {
+    width: 300px;
+    height: 300px;
+    background-color: #1fbfb8;
     display: inline-block;
     margin-right: 30px;
-    padding: 10px;
-    color: #583759;
+    padding: 15px;
+    color: #031163;
 }
 
-.event-name {
+.event-name, .friend-name {
     margin-top: 10px;
     text-align: center;
+    font-weight: 500;
+    font-size: 20px;
 }
+
 img {
-    height: 100px;
-    width: 140px;
+    height: 200px;
+    width: 270px;
 }
 
-/* Friend */
-.friend {
-    background-color: #E9CFEC;
-    display: inline-block;
-    margin-right: 30px;
-    padding: 10px;
-    color: #583759;
-}
-
-.friend-name {
-    margin-top: 10px;
+.dp {
+    height: 300px;
+    width: 300px;
     text-align: center;
+}
+
+i {
+    font-size: 30px !important;
+    color: #05716c;
+}
+
+.navbar {
+    background-color: white !important;
 }

@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/echo';
+    var invokeUrl = 'https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/dev';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -81,6 +81,24 @@ apigClientFactory.newClient = function (config) {
 
     var apiGatewayClient = apiGateway.core.apiGatewayClientFactory.newClient(simpleHttpClientConfig, sigV4ClientConfig);
     
+    
+    
+    apigClient.attendeventGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['name', 'eventid'], ['body']);
+        
+        var attendeventGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/attendevent').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['name', 'eventid']),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(attendeventGetRequest, authType, additionalParams, config.apiKey);
+    };
     
     
     apigClient.eventGet = function (params, body, additionalParams) {
@@ -122,13 +140,13 @@ apigClientFactory.newClient = function (config) {
     apigClient.followGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['username', 'friendName'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['friendname', 'username'], ['body']);
         
         var followGetRequest = {
             verb: 'get'.toUpperCase(),
             path: pathComponent + uritemplate('/follow').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['username', 'friendName']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['friendname', 'username']),
             body: body
         };
         
@@ -302,13 +320,13 @@ apigClientFactory.newClient = function (config) {
     apigClient.userinfoGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['username', 'name', 'bio'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['photo', 'username', 'bio', 'name'], ['body']);
         
         var userinfoGetRequest = {
             verb: 'get'.toUpperCase(),
             path: pathComponent + uritemplate('/userinfo').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['username', 'name', 'bio']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['photo', 'username', 'bio', 'name']),
             body: body
         };
         

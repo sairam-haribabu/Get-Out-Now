@@ -1,0 +1,8 @@
+.eImage {
+    display: block;
+    width: 500px;
+    height: 300px;
+    border: 5px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
