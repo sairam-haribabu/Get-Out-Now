@@ -1,8 +1,8 @@
 var sdk = apigClientFactory.newClient();
 
 function logOut(){
-    localStorage.setItem("username") = ""
-    localStorage.setItem("friendusername") = ""
+    localStorage.setItem("username","")
+    localStorage.setItem("friendusername","")
     var userPoolId = 'us-east-1_fvK1OHbeR';
     var clientId = '543gs8p8cujqb4oe90gs88io3l';
     var poolData = { 
@@ -15,7 +15,7 @@ function logOut(){
         cognitoUser.signOut();
         location.href = '../login/index.html';
     }
-    localStorage.setItem("username") = ""
+    localStorage.setItem("username","")
 }
 
 function friendProfile(friendName) {
@@ -54,6 +54,8 @@ $(document).ready(function() {
     if(localStorage.getItem('friendusername') == "") {
         username = localStorage.getItem('username');
     }
+    console.log("profile");
+    console.log(username)
 
     sdk.profileGet({'username':username}, {}, {}).then((response) => {
         response = response['data']['body']
