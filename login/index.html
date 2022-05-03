@@ -121,7 +121,7 @@
             $("#bucketNameInput").show();
             $("#logOutButton").show();
             
-            if(localStorage.getItem('username') == null) {
+            if(localStorage.getItem('username') == null || localStorage.getItem('username') =='') {
                 localStorage.setItem('username', $('#userNameInput').val());
             }
             if(newUser) {
