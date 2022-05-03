@@ -6,3 +6,15 @@
     margin-left: auto;
     margin-right: auto;
 }
+.attending{
+    background-color: lightgreen;
+    border: black;
+}
+.attend{
+    background-color: lightblue;
+    border: black;
+}
+
+.block{
+    padding: 10px;
+}
