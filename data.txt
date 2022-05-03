@@ -1,0 +1,10 @@
+rh123 Haribabu Roshan CS India 3.8
+ad241 Deets Ana EE US 4.0
+mc231 Cobart Michelle CS Mexico 3.9
+ax227 Wolf Alexander IEOR Mexico 3.1
+mp309 Petrit Monica CS Canada 3.3
+am351 Martinez Alfredo EE India 3.75
+ar180 Ramos Ave CS US 3.78
+mp219 Raymon Mike IEOR Mexico 3.55
+sg222 Grey Sam EE US 3.9
+cc177 Cardenas Caleb CS India 3.82

@@ -1,0 +1,14 @@
+rh123 Haribabu Roshan CS India 3.8
+mc231 Cobart Michelle CS Mexico 3.9
+ar180 Ramos Ave CS US 3.78
+cc177 Cardenas Caleb CS India 3.82
+India 2
+Mexico 1
+US 1
+rh123 Haribabu Roshan CS India 3.8
+mc231 Cobart Michelle CS Mexico 3.9
+ar180 Ramos Ave CS US 3.78
+cc177 Cardenas Caleb CS India 3.82
+India 2
+Mexico 1
+US 1
