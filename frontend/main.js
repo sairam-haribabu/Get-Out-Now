@@ -18,8 +18,8 @@ function show_event(id) {
 }
 
 function logOut(){
-    localStorage.setItem("username") = ""
-    localStorage.setItem("friendusername") = ""
+    localStorage.setItem("username","")
+    localStorage.setItem("friendusername","")
     var userPoolId = 'us-east-1_fvK1OHbeR';
     var clientId = '543gs8p8cujqb4oe90gs88io3l';
 

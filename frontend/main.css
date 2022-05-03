@@ -66,3 +66,6 @@ i {
     background-color: #031163;
     padding: 0px;
 }
+.icon:hover{
+    cursor: pointer;
+}

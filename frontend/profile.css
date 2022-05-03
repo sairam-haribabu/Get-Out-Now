@@ -56,3 +56,6 @@ i {
 .navbar {
     background-color: white !important;
 }
+.icon:hover{
+    cursor: pointer;
+}
