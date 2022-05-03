@@ -121,9 +121,11 @@
             $("#bucketNameInput").show();
             $("#logOutButton").show();
             
-            if(localStorage.getItem('username') == null) {
+            if(localStorage.getItem('username') == null || localStorage.getItem('username') == "") {
                 localStorage.setItem('username', $('#userNameInput').val());
+                console.log(localStorage.getItem('username'))
             }
+            console.log("U", localStorage.getItem('username'))
             if(newUser) {
                 location.href = '../frontend/user_info.html';
             } else {
