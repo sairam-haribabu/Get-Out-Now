@@ -104,7 +104,7 @@ $(document).ready(function() {
         $("#dp").append(image)
         
         if(friendsInfo.length > 0) {
-            let heading = $("<h4> YOUR FRIENDS </h4>")
+            let heading = $("<h3> FRIENDS </h3>")
             $("#friends-block").append(heading)
 
             let friendRow = $("<div class='row'> </div>")
@@ -121,7 +121,7 @@ $(document).ready(function() {
         }
 
         if(eventsInfo.length > 0) {
-            heading = $("<h4> UPCOMING EVENTS </h4>")
+            heading = $("<h3> UPCOMING EVENTS </h3>")
             $("#events-block").append(heading)
 
             let eventRow = $("<div class='row'> </div>")

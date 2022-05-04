@@ -1,13 +1,13 @@
 i {
-    font-size: 35px !important;
+    font-size: 30px !important;
     color: black;
     margin-right: 100px
 }
 
 .navbar-nav {
-    background-color: white !important;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background-color: lightcyan !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
     position: fixed; 
     top: 0;
     width: 100%; 
@@ -33,7 +33,7 @@ body {
 }
 
 .main {
-    background-color: white;
+    background-color: lightcyan;
     margin-top: 130px !important;
     margin-bottom: 50px;
 }
@@ -41,10 +41,8 @@ body {
 
 /* ----------------------  User Data ---------------------- */
 #user-block {
-    /* padding-left: 30px;
-    padding-top: 30px; */
     padding: 40px;
-    background-color: white;
+    background-color: lightcyan;
 }
 
 #username {
@@ -59,7 +57,7 @@ body {
 
 #bio {
     margin-top: 10px;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 400;
 }
 
@@ -75,7 +73,7 @@ body {
 /* ----------------------------  Event Data ---------------------- */
 #events-block, #friends-block {
     padding: 40px;
-    background-color: white;
+    background-color: lightcyan;
     margin-top: 10px;
 }
 

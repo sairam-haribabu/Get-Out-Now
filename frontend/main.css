@@ -1,13 +1,13 @@
 i {
-    font-size: 35px !important;
+    font-size: 30px !important;
     color: black;
     margin-right: 100px
 }
 
 .navbar-nav {
-    background-color: white !important;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background-color: lightcyan !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
     position: fixed; 
     top: 0;
     width: 100%; 
@@ -67,17 +67,30 @@ button {
 
 /* ------------------------------------------------------------ */
 
-img {
-    width: 250px;
-    height: 250px;
-    margin-right: 20px;
-}
-
 #display-block {
     color: black;
     padding: 25px;
-    background-color: white;
-    margin-top: 50px !important;
+    background-color: lightcyan;
     margin-bottom: 50px;
     text-align: center;
+}
+
+.event, .friend {
+    background-color: #022b44;
+    margin-right: 40px;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
+
+.event-name, .friend-name {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+img {
+    height: 230px;
+    width: 100%;
 }
