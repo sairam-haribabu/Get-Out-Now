@@ -29,9 +29,16 @@ function myProfile() {
 }
 
 function followFriend(me, friend) {
-    sdk.followGet({'username':me, 'friendName':friend}, {}, {}).then((response) => {
+    console.log("followFriend");
+    console.log(me,friend);
+    sdk.followGet({'username':me, 'friendname':friend}, {}, {}).then((response) => {
         if(response) {
+            console.log(response);
+            console.log(response['status']);
             location.reload()
+            if(response['status'] ==200){
+                localStorage.setItem("mainuserfriends",localStorage.getItem("mainuserfriends")+','+friend)
+            }
         }
     })
     .catch((error) => {
@@ -39,14 +46,33 @@ function followFriend(me, friend) {
     });
 }
 
-function isFriend(friendusername, friendsInfo) {
-    for(i in friendsInfo) {
-        if(friendusername == friendsInfo[i]['username']) {
-            return true
+function isFriend(friendusername) {
+    mainuserfriends=localStorage.getItem("mainuserfriends");
+    if(mainuserfriends.includes(friendusername)){
+        console.log("IS A FRIEND");
+        return true;
+    }
+    else{
+        console.log("not a friend");
+        return false;
+    }
+}
+
+function getFriend(username) {
+    if(localStorage.getItem("friendusername") != "") {
+        if(isFriend(localStorage.getItem("friendusername"))) {
+            let div = $("<button type='submit' id='follow'> FOLLOWING </button>")
+            $("#follow-block").append(div)
+        } else {
+            let me = localStorage.getItem('username');
+            
+            let div = $("<button type='submit' id='follow' onclick='followFriend(\"" + me + "\", \"" + username + "\")'> FOLLOW </button>")
+            $("#follow-block").append(div)
         }
     }
-    return false
+
 }
+
 
 $(document).ready(function() {
     console.log( "ready!" )
@@ -54,16 +80,20 @@ $(document).ready(function() {
     if(localStorage.getItem('friendusername') == "") {
         username = localStorage.getItem('username');
     }
-    console.log("profile");
-    console.log(username)
 
     sdk.profileGet({'username':username}, {}, {}).then((response) => {
         response = response['data']['body']
         console.log(response)
-
         userInfo = response['user']
         friendsInfo = response['friends']
         eventsInfo = response['events']
+        if(username==localStorage.getItem('username')){
+            let mainuserfriends="";
+            for(i in friendsInfo){
+                mainuserfriends=mainuserfriends+','+friendsInfo[i]['username'];
+            }
+            localStorage.setItem('mainuserfriends', mainuserfriends.substring(1));
+        }
 
         let image = $("<img class='dp' src = '" + "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + userInfo['photo'] + "'>")
         $("#dp").append(image)
@@ -99,19 +129,10 @@ $(document).ready(function() {
         $("#username").text(username)
         $("#name").text(userInfo['name'])
         $("#bio").text(userInfo['bio'])
+        getFriend(username);
+
     })
     .catch((error) => {
         console.log('an error occurred', error);
     });
-
-    if(localStorage.getItem("friendusername") != "") {
-        if(isFriend(localStorage.getItem("friendusername"), friendsInfo)) {
-            let div = $("<button type='submit' id='follow'> FOLLOWING </button>")
-            $("#follow-block").append(div)
-        } else {
-            let me = localStorage.getItem('username');
-            let div = $("<button type='submit' id='follow' onclick='followFriend(\"" + me + "\", \"" + username + "\")'> FOLLOW </button>")
-            $("#follow-block").append(div)
-        }
-    }
 });
