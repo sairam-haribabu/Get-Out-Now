@@ -23,6 +23,11 @@ function friendProfile(friendName) {
     location.href = './profile.html';
 }
 
+function eventPage(id) {
+    localStorage.setItem('event-id', id);
+    location.href = './event.html';
+}
+
 function myProfile() {
     localStorage.setItem('friendusername', "")
     location.href = './profile.html';

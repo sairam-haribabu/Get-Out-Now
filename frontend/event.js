@@ -7,23 +7,29 @@ function showEvents(response) {
     
 
     var nameDiv = $("<div> " + response['data']['name'] + "</div>")
-    var nameDiv = $("<div> </div>")
+    var nameDiv = $("<div> <b> Event Name:</b> <br></div>")
     nameDiv.append(response["data"]["name"]);
     nameDiv.append($("<br>"))
 
     $("#name-block").append(nameDiv)
 
-
-    var detailsDiv = $("<div> </div>")
-    detailsDiv.append(response["data"]["venue"]["name"]);
-    detailsDiv.append($("<br>"))
-    var address = response["data"]["venue"]["location"]
-    detailsDiv.append(address["address"] + ", " + address["city"] + ", " + address["state"]);
-    detailsDiv.append($("<br>"))
-    detailsDiv.append($("<br>"))
+    var instances = response["data"]["instances"]
+    var detailsDiv = $("<div> <b> Dates and Venues:</b> <br></div>")
+    for (let key in instances){
+        let entry = response["data"]["instances"][key]
+        detailsDiv.append(entry["date"]);
+        detailsDiv.append($("<br>"))
+        detailsDiv.append(entry["venue"]["name"]);
+        detailsDiv.append($("<br>"))
+        var address = entry["venue"]["location"]
+        detailsDiv.append(address["address"] + ", " + address["city"] + ", " + address["state"]);
+        detailsDiv.append($("<br>"))
+        detailsDiv.append($("<br>"))
+    }
+    
     $("#details-block").append(detailsDiv)
    
-    let friends = $("<div> </div>") 
+    let friends = $("<div> <b> Friends Attending</b> </div>") 
     for (let key in response["data"]["attendees"]) {
         let friend = $("<div>" + response["data"]["attendees"][key] + "</div>")
         if (username != response["data"]["attendees"][key]){
@@ -35,7 +41,6 @@ function showEvents(response) {
 }
 
 function attend_event(name, eventid){
-    console.log("boom")
     sdk.attendeventGet({'eventid':eventid, 'name':name}, {}, {}).then((response) => {
         response = response['data']['body']
         
