@@ -1,13 +1,71 @@
+i {
+    font-size: 35px !important;
+    color: black;
+    margin-right: 100px
+}
+
+.navbar-nav {
+    background-color: white !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed; 
+    top: 0;
+    width: 100%; 
+    z-index: 100;
+}
+
+.icon:hover{
+    cursor: pointer;
+}
+
+#logout {
+    margin-right: 0px !important;
+    float: right;
+    padding-right: 0px !important
+}
+
+body {
+    background-image: url('./wall2.jpeg');
+    background-size: cover;
+    background-position:50% 50%;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ----------------------------------  SEARCH BAR -----------------------*/
+
+
+.main-text {
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#search-block {
+    padding: 0px;
+    background: none !important;
+    text-align: center;
+}
+
+input {
+    width: 800px;
+    height: 50px;
+}
+
 button {
     background-color: white;
     color: #1978a5;
     font-weight: 600;
     height: 50px;
-    border-radius: 5px;
     width: 50px;
     margin-right: 10px;
-    margin-left: -3px !important;
+    margin-left: -4px !important;
 }
+
+/* ------------------------------------------------------------ */
 
 img {
     width: 250px;
@@ -15,54 +73,11 @@ img {
     margin-right: 20px;
 }
 
-body {
-    background-color: #031163;
-    color: #b85042;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-input {
-    width: 800px;
-    height: 50px;
-    border-radius: 5px;
-}
-
-i {
-    font-size: 30px !important;
-    color: #05716c;
-}
-
-.navbar {
-    background-color: white !important;
-}
-
-.main-text {
-    color: white;
-    font-size: 28px;
-    font-weight: 500;
-    margin-top: 60px;
-    margin-bottom: 30px;
-}
-
-.container {
-    text-align: center;
-}
-
-#query, #label {
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 25px;
-    width: 200px;
-    background-color: whitesmoke
-}
-
-#display-block, #search-block, #your-block, #friends-block {
-    background-color: #1978a5;
-    color: #b85042;
+#display-block {
+    color: black;
     padding: 25px;
-}
-
-#search-block {
-    background-color: #031163;
-    padding: 0px;
+    background-color: white;
+    margin-top: 50px !important;
+    margin-bottom: 50px;
+    text-align: center;
 }

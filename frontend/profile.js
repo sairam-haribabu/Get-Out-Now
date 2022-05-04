@@ -57,7 +57,7 @@ $(document).ready(function() {
     console.log(username)
     sdk.profileGet({'username':username}, {}, {}).then((response) => {
         response = response['data']['body']
-        console.log(response)
+        console.log(response['user'], response['friends'], response['events'])
 
         userInfo = response['user']
         friendsInfo = response['friends']
@@ -66,32 +66,38 @@ $(document).ready(function() {
         let image = $("<img class='dp' src = '" + "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + userInfo['photo'] + "'>")
         $("#dp").append(image)
         
-        let heading = $("<h4> YOUR FRIENDS </h4>")
-        $("#friends-block").append(heading)
-        // $("#friends-block").append($("<br>"))
+        if(friendsInfo.length > 0) {
+            let heading = $("<h4> YOUR FRIENDS </h4>")
+            $("#friends-block").append(heading)
 
-        for(i in friendsInfo) {
-            let div = $("<div class='friend'> <div/>")
-            let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + friendsInfo[i]['photo']
-            let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "'>  <div/>")
-            $(div).append(divImage)
-            let divName = $("<div class='friend-name' onclick='friendProfile(\"" + friendsInfo[i]['username'] + "\")'>" + friendsInfo[i]['name'] +  "</a> <div/>")
-            $(div).append(divName)
-            $("#friends-block").append(div)
+            let friendRow = $("<div class='row'> </div>")
+            for(i in friendsInfo) {
+                let div = $("<div class='col-md-3 friend'> <div/>")
+                let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + friendsInfo[i]['photo']
+                let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "'>  <div/>")
+                $(div).append(divImage)
+                let divName = $("<div class='friend-name' onclick='friendProfile(\"" + friendsInfo[i]['username'] + "\")'>" + friendsInfo[i]['name'] +  "</a> <div/>")
+                $(div).append(divName)
+                $(friendRow).append(div)
+            }
+            $("#friends-block").append(friendRow)
         }
 
-        heading = $("<h4> UPCOMING EVENTS </h4>")
-        $("#events-block").append(heading)
-        // $("#events-block").append($("<br>"))
+        if(eventsInfo.length > 0) {
+            heading = $("<h4> UPCOMING EVENTS </h4>")
+            $("#events-block").append(heading)
 
-        for(i in eventsInfo) {
-            let div = $("<div class='event'> <div/>")
-            let imgsrc = eventsInfo[i]['photo']
-            let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "'>  <div/>")
-            $(div).append(divImage)
-            let divName = $("<div class='event-name' onclick='eventPage(\"" + eventsInfo[i]['eventid'] + "\")'>" + eventsInfo[i]['name'] +  "</a> <div/>")
-            $(div).append(divName)
-            $("#events-block").append(div)
+            let eventRow = $("<div class='row'> </div>")
+            for(i in eventsInfo) {
+                let div = $("<div class='col-md-3 event'> <div/>")
+                let imgsrc = eventsInfo[i]['photo']
+                let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "'>  <div/>")
+                $(div).append(divImage)
+                let divName = $("<div class='event-name' onclick='eventPage(\"" + eventsInfo[i]['eventid'] + "\")'>" + eventsInfo[i]['name'] +  "</a> <div/>")
+                $(div).append(divName)
+                $(eventRow).append(div)
+            }
+            $("#events-block").append(eventRow)
         }
 
         $("#username").text(username)

@@ -56,7 +56,7 @@ function searchEvents() {
         allDisplayDiv.innerHTML = '';
 
         if(response) {
-            // DISPLAYING USERS
+            DISPLAYING USERS
             users = response['users']
             console.log(users)
             if (users.length > 0) {

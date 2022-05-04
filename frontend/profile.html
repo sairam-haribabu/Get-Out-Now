@@ -35,37 +35,32 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar-nav">
             <div class="container">
                 <a class="navbar-brand" href="./main.html"> <i class="fa fa-home"></i> </a>
                 <a class="navbar-brand" href="./friends_events.html"> <i class='fa fa-group'></i> </a>
-                <div class="navbar-brand" onclick="myProfile()"> <i class='fa fa-user'></i> </div>
-                <div class="navbar-brand" onclick="logOut()"> <i class="fa fa-sign-out"></i> </a>
+                <div class="navbar-brand" onclick="myProfile()"> <i class='fa fa-user icon'></i> </div>
+                <div class="navbar-brand" onclick="logOut()" id="logout"> <i class="fa fa-sign-out icon"></i> </a>
             </div>
         </nav>
-        <div class="container">
-            <div id="user-block" class="block">
-                <br>
-                <div class="row">
-                    <div class="col-md-7">
-                        <div id="username">
-                        </div>
-                        <div id="name">
-                        </div>
-                        <br>
-                        <div id="bio">
-                        </div>
-                        <br>
-                        <div id="follow-block">
-                        </div>
+        <div class="container main">
+            <div class="row block" id="user-block">
+                <div class="col-md-8">
+                    <div id="name">
                     </div>
-                    <div class="col-md-5">
-                        <div id="dp">
-                        </div>
+                    <div id="username">
+                    </div>
+                    <div id="bio">
+                        
+                    </div>
+                    <div id="follow-block">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div id="dp">
                     </div>
                 </div>
             </div>
-            <br>
             <div id="events-block" class="block">
             </div>
             <br>

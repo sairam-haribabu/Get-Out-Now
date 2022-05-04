@@ -1,33 +1,94 @@
-body {
-    background-color: white;
-    color: black
+i {
+    font-size: 35px !important;
+    color: black;
+    margin-right: 100px
 }
 
-/* User Data */
+.navbar-nav {
+    background-color: white !important;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed; 
+    top: 0;
+    width: 100%; 
+    z-index: 100;
+}
+
+.icon:hover{
+    cursor: pointer;
+}
+
+#logout {
+    margin-right: 0px !important;
+    float: right;
+    padding-right: 0px !important
+}
+
+body {
+    background-image: url('./wall2.jpeg');
+    background-size: cover;
+    background-position:50% 50%;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main {
+    background-color: white;
+    margin-top: 130px !important;
+    margin-bottom: 50px;
+}
+
+
+/* ----------------------  User Data ---------------------- */
+#user-block {
+    /* padding-left: 30px;
+    padding-top: 30px; */
+    padding: 40px;
+    background-color: white;
+}
+
 #username {
-    font-size: 40px;
+    font-size: 25px;
     font-weight: 600;
 }
 
 #name {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 400;
 }
 
 #bio {
-    font-size: 28px;
+    margin-top: 10px;
+    font-size: 25px;
     font-weight: 400;
 }
 
-/* Event  */
+.dp {
+    height: 300px ;
+    width: 300px ;
+    text-align: center;
+}
+
+/* ---------------------------------------------------------- */
+
+
+/* ----------------------------  Event Data ---------------------- */
+#events-block, #friends-block {
+    padding: 40px;
+    background-color: white;
+    margin-top: 10px;
+}
+
 .event, .friend {
-    width: 300px;
-    height: 300px;
-    background-color: #1fbfb8;
+    /* height: 300px !important;
+    width: 300px !important; */
+    background-color: #022b44;
     display: inline-block;
     margin-right: 30px;
+    margin-top: 30px;
     padding: 15px;
-    color: #031163;
+    color: white;
+    text-align: center;
 }
 
 .event-name, .friend-name {
@@ -38,21 +99,9 @@ body {
 }
 
 img {
-    height: 200px;
-    width: 270px;
+    height: 230px;
+    width: 230px;
 }
 
-.dp {
-    height: 300px;
-    width: 300px;
-    text-align: center;
-}
+/* ---------------------------------------------------------- */
 
-i {
-    font-size: 30px !important;
-    color: #05716c;
-}
-
-.navbar {
-    background-color: white !important;
-}

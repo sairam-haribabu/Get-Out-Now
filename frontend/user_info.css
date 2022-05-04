@@ -9,16 +9,25 @@ input, button {
 }
 
 .container {
-    background-color: #f5f0e1;
+    background-color: #F0FFFF;
     margin: auto;
     margin-top: 100px;
-    padding: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 45px;
+    padding-bottom: 45px;
     text-align: center;
     width: 800px;
     color: #1e3d59;
-    border: 10px solid #ffc13b;
+    border: 5px solid #f5f0e1;
 }
 
 #bio {
     height: 100px;
+}
+
+body {
+    background-image: url('./wall2.jpeg');
+    background-size: cover;
+    background-position:50% 50%;
 }
