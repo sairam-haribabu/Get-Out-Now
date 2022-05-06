@@ -18,12 +18,11 @@ function show_event(id) {
 }
 
 function logOut(){
-    localStorage.setItem("username","")
-    localStorage.setItem("friendusername","")
+    localStorage.setItem("username", "")
+    localStorage.setItem("friendusername", "")
     var userPoolId = 'us-east-1_fvK1OHbeR';
     var clientId = '543gs8p8cujqb4oe90gs88io3l';
 
-   console.log("here")
     var poolData = { 
         UserPoolId : userPoolId,
         ClientId : clientId
@@ -44,7 +43,8 @@ function searchEvents() {
     } else {
         keyword = document.getElementById('keyword').value;
     }
-    // user is searching for event name, date, categories, or location
+
+    // user is searching for event name, date, categories, location or all
     sdk.searchGet({'query':keyword}, {}, {}).then((response) => {
         document.getElementById('keyword').value = ""; // clearing search for next search
 
@@ -58,104 +58,70 @@ function searchEvents() {
         if(response) {
             // DISPLAYING USERS
             users = response['users']
-            console.log(users)
+
             if (users.length > 0) {
-                allDisplayDiv.appendChild(document.createTextNode("Search results based on user"));
-            
-                for (let idx in users) {
-                    var i = 0; // used to limit how many elements in each row
-                    // creating first row that the users will be placed
-                    var usersRow = document.createElement("div");
-                    usersRow.classList.add("row");
-                    allDisplayDiv.appendChild(usersRow);
+                let heading = $("<h4> SEARCH RESULTS BASED ON USER </h4>")
+                $("#display-block").append(heading)
+                $("#display-block").append($("<br>"))
 
-                    if (i == 3) {
-                        // creates a division between the last row & this row
-                        div = document.createElement("div");
-                        div.classList.add("w-100");
-                        usersRow.appendChild(div);
-
-                        // new usersRow
-                        i = 0;
+                let row = $("<div class='row'> </div>")
+                for(i in users) {
+                    let user = users[i]
+                    if(i%3 == 0) {
+                        if(i != 0) {
+                            $("#display-block").append(row)
+                            $("#display-block").append($("<br>"))
+                        }
+                        $(row).append($("<div class='col-md-1'> </div>"))
+                        row = $("<div class='row'> </div>")
+                        $(row).append($("<div class='col-md-1'> </div>"))
                     }
-
-                    let user = users[idx]["data"];
-                    let username = users[idx]["username"];
-
-                    // creating column within row
-                    let userCol = document.createElement("div");
-                    userCol.classList.add("col");
-                    usersRow.appendChild(userCol);
-                    
-                    // user image
-                    let userImg = document.createElement("img");
-                    userImg.id = username; // link for user connects to user id
-                    userImg.src = "https://ccbduserphotobucket.s3.amazonaws.com/" + username + ".jpg";
-                    userImg.onclick = function(){friendsProfile(userImg.id)};
-                    userCol.appendChild(userImg)
-                    userCol.appendChild(document.createElement("br"));
-
-                    // user name -- only keep first 32 characters of name
-                    let name = user["name"];
-                    if (name.length > 32) {
-                        name = name.substring(0, 32) + "...";
-                    }
-                    let userName = document.createTextNode(name);
-                    userCol.appendChild(userName);  
-
-                    i++;
+                    let div = $("<div class='user col-md-3'> </div>")
+                    let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + user['data']['photo']
+                    let divImage = $("<div class='user-image'> <img src = '" + imgsrc + "' onclick='friendsProfile(\"" + user['username'] + "\")'>  <div/>")
+                    $(div).append(divImage)
+                    let divName = $("<div class='user-name'>" + user['data']['name'] + "<div/>")
+                    $(div).append(divName)
+                    $(row).append(div)
+                }
+                if(i == 0) {
+                    $("#display-block").append(row)
                 }
             }
         
             // DISPLAYING EVENTS
             events = response['events'];
-            for (let key in events) {
-                if (key != 'all') {
-                    allDisplayDiv.appendChild(document.createTextNode("Search results based on " + key + "!!!!!!!!!!!!"));
+            console.log(events)
+            for(key in events) {
+                if(key != 'all') {
+                    let heading = $("<h4> SEARCH RESULTS BASED ON " + key + " </h4>")
+                    $("#display-block").append(heading)
+                    $("#display-block").append($("<br>"))
                 }
-                
-                var i = 0; // used to limit how many elements in each row
-                // creating first row that the events will be placed
-                var eventsRow = document.createElement("div");
-                eventsRow.classList.add("row");
-                allDisplayDiv.appendChild(eventsRow);
 
-
-                for (let idx in events[key]) {
-                    if (i == 3) {
-                        // creates a division between the last row & this row
-                        div = document.createElement("div");
-                        div.classList.add("w-100");
-                        eventsRow.appendChild(div);
-
-                        // new eventsRow
-                        i = 0;
+                let row = $("<div class='row'> </div>")
+                for(i in events[key]) {
+                    let event = events[key][i]
+                    if(i%3 == 0) {
+                        if(i != 0) {
+                            $("#display-block").append(row)
+                            $("#display-block").append($("<br>"))
+                        }
+                        $(row).append($("<div class='col-md-1'> </div>"))
+                        row = $("<div class='row'> </div>")
+                        $(row).append($("<div class='col-md-1'> </div>"))
                     }
+                    let div = $("<div class='event col-md-3'> </div>")
+                    let imgsrc = event['image']
+                    let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "' onclick='show_event(\"" + event['id'] + "\")'>  <div/>")
+                    $(div).append(divImage)
+                    let divName = $("<div class='event-name'>" + event['name'] + "<div/>")
+                    $(div).append(divName)
+                    $(row).append(div)
+                }
 
-                    let event = events[key][idx];
-        
-                    // creating column within row
-                    let eventCol = document.createElement("div");
-                    eventCol.classList.add("col");
-                    eventsRow.appendChild(eventCol);
-                    
-                    // event image
-                    let eventImg = document.createElement("img");
-                    eventImg.id = event["id"]; // link for event connects to event id
-                    eventImg.src = event["image"];
-                    eventImg.onclick = function(){show_event(eventImg.id)};
-                    eventCol.appendChild(eventImg)
-                    eventCol.appendChild(document.createElement("br"));
-        
-                    // event name -- only keep first 32 characters of name
-                    let name = event["name"];
-                    if (name.length > 32) {
-                        name = name.substring(0, 32) + "...";
-                    }
-                    let eventName = document.createTextNode(name);
-                    eventCol.appendChild(eventName);  
-
-                    i++;
+                if(i == 0) {
+                    $("#display-block").append(row)
                 }
             }
         }
@@ -164,3 +130,7 @@ function searchEvents() {
         console.log('an error occurred', error);
     });
 }
+
+$(document).ready(function() {
+    searchEvents()
+})
