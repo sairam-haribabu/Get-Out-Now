@@ -69,3 +69,37 @@ i {
 .icon:hover{
     cursor: pointer;
 }
+
+/* pagination position styling */
+.pagination_section {
+    position: absolute;
+    top: 500px;
+    right: 230px;
+}
+ 
+/* pagination styling */
+.pagination_section a {
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+}
+ 
+/* pagination hover effect on non-active */
+.pagination_section a:hover:not(.active) {
+    background-color: #031F3B;
+    color: white;
+}
+ 
+/* pagination hover effect on active
+a:nth-child(2) {
+    background-color: white;
+    color: black;
+}
+      
+a:nth-child(1) {
+    font-weight: bold;
+}
+      
+a:nth-child(7) {
+    font-weight: bold;
+} */

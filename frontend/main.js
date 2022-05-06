@@ -1,6 +1,6 @@
 var sdk = apigClientFactory.newClient();
 
-window.onload = searchEvents();
+// window.onload = searchEvents();
 
 function myProfile() {
     localStorage.setItem('friendusername', "");
