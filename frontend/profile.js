@@ -75,7 +75,6 @@ function getFriend(username) {
             $("#follow-block").append(div)
         }
     }
-
 }
 
 
@@ -89,13 +88,17 @@ $(document).ready(function() {
     sdk.profileGet({'username':username}, {}, {}).then((response) => {
         response = response['data']['body']
         console.log(response)
-        userInfo = response['user']
+        // userInfo = response['user']
+        // friendsInfo = response['friends']
+        // eventsInfo = response['events']
+        userInfo = response
         friendsInfo = response['friends']
         eventsInfo = response['events']
+
         if(username==localStorage.getItem('username')){
-            let mainuserfriends="";
+            let mainuserfriends = "";
             for(i in friendsInfo){
-                mainuserfriends=mainuserfriends+','+friendsInfo[i]['username'];
+                mainuserfriends = mainuserfriends + ',' + friendsInfo[i]['username'];
             }
             localStorage.setItem('mainuserfriends', mainuserfriends.substring(1));
         }
