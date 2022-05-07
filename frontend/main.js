@@ -30,6 +30,8 @@ function getFriendsEvents(id) {
 }
 
 function logOut(){
+    localStorage.setItem('userlocation', '');   
+    localStorage.setItem('usercategory', '');   
     localStorage.setItem("username", "")
     localStorage.setItem("friendusername", "")
     localStorage.setItem("email", "")
@@ -147,6 +149,14 @@ function searchEvents() {
         console.log('an error occurred', error);
     });
 }
+function getUserInfo(){
+    username=localStorage.getItem('username');
+    sdk.profileGet({'username':username}, {}, {}).then((response) => {
+        response = response['data']['body']
+        localStorage.setItem("userlocation",response['city'])
+        localStorage.setItem("usercategory",response['categories'])
+    })
+}
 
 $(document).ready(function() {
     // document.getElementById('display-block').innerHTML = '';
@@ -154,4 +164,8 @@ $(document).ready(function() {
         $("#keyword").val(localStorage.getItem('category'))
     }
     searchEvents()
+    if(localStorage.getItem('usercategory') == null || localStorage.getItem('userlocation') == null){
+        console.log("get user info");
+        getUserInfo();
+    }
 })

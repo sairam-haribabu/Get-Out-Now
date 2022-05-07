@@ -16,6 +16,8 @@ function home() {
 }
 
 function logOut(){
+    localStorage.setItem('userlocation', '');   
+    localStorage.setItem('usercategory', '');
     localStorage.setItem("username","")
     localStorage.setItem("friendusername","")
     localStorage.setItem("email", "")
