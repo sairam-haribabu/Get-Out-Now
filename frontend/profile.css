@@ -28,7 +28,7 @@ i {
 
 body {
     background-color: #2A1B3D;
-    color: #a4b3b6;
+    color: #a4b3b6 !important;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -59,6 +59,20 @@ body {
     font-size: 22px;
     font-weight: 400;
 }
+
+#follow {
+    width: 100% !important;
+    background-color: #44318D;
+    border: none;
+    color: #a4b3b6
+}
+
+/* 
+#follow-block {
+    width: 100%;
+    bottom: 0 !important;
+    position: absolute;
+} */
 
 .dp {
     height: 300px ;

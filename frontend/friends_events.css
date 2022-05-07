@@ -45,7 +45,6 @@ body {
 #display-block {
     color: #a4b3b6;
     padding: 25px;
-    background-color: #8265a7;
     margin-bottom: 50px;
     text-align: center;
 }
@@ -54,7 +53,7 @@ body {
     background-color: #8265a7;
     margin-right: 40px;
     padding: 15px;
-    color: #a4b3b6;
+    color: white;
     text-align: center;
 }
 

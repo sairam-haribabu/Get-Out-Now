@@ -50,6 +50,7 @@ input {
     height: 40px;
     color: #a4b3b6;
     font-weight: 600;
+    border: none;
 }
 
 .log{

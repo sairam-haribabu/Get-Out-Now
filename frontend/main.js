@@ -50,6 +50,7 @@ function logOut(){
 }
 
 function searchEvents() {
+    document.getElementById('display-block').innerHTML = '';
     keywordEl = document.getElementById('keyword');
     console.log("KEY", keywordEl.value)
     if (keywordEl == null) {
@@ -69,8 +70,6 @@ function searchEvents() {
 
         response = response['data']['body'];
         console.log(response);
-        
-        document.getElementById('display-block').innerHTML = '';
 
         if(response) {
             // DISPLAYING USERS
@@ -149,7 +148,9 @@ function searchEvents() {
 }
 
 $(document).ready(function() {
-    // document.getElementById('display-block').innerHTML = '';
+    if(localStorage.getItem('username').length <= 0) {
+        logOut();
+    }
     if(localStorage.getItem('category') != null && localStorage.getItem('category') != "") {
         $("#keyword").val(localStorage.getItem('category'))
     }

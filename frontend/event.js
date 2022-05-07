@@ -141,6 +141,9 @@ function userAttendingEvent(username, response) {
 }
 
 window.onload = function() {
+    if(localStorage.getItem('username').length <= 0) {
+        logOut()
+    }
     event_id = localStorage.getItem('event-id');
     username = localStorage.getItem('username');
     let flag = false

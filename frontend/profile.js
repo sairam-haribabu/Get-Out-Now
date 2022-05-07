@@ -95,6 +95,9 @@ function getFriend(username) {
 
 $(document).ready(function() {
     console.log( "ready!" )
+    if(localStorage.getItem('username').length <= 0) {
+        logOut();
+    }
     let username = localStorage.getItem('friendusername');
     if(localStorage.getItem('friendusername') == "") {
         username = localStorage.getItem('username');

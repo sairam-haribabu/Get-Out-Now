@@ -37,21 +37,21 @@ function getFriendsEvents() {
     username = localStorage.getItem('username');
     sdk.friendseventsGet({'username': username}).then((response) => {
         events = response['data']['body'];
-        console.log(events);
+        console.log("E", events);
 
         // getting div that holds row of users
         var allDisplayDiv = document.getElementById('display-block');
         allDisplayDiv.innerHTML = '';
 
-        if(events.length > 0) {
+        console.log("L", events.length)
+        var length = Object.keys(events).length
+        if(length > 0) {
             // DISPLAYING FRIEND'S EVENTS
             let i = -1;
             let row = $("<div class='row'> </div>");
             for(key in events) {
                 i++;
                 let event = events[key];
-                console.log("event: ");
-                console.log(event);
                 if(i%3 == 0) {
                     if(i != 0) {
                         $("#display-block").append(row)

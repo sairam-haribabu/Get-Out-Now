@@ -276,8 +276,12 @@ function logMessage(message){
     $('#log').append(message + '</br>');
 }
 
+
 $(document).ready(function() {
     $('#log').empty();
+    if(localStorage.getItem('username').length <= 0) {
+        logOut();
+    }
     localStorage.setItem('username', '');
     localStorage.setItem('friendusername', '');
     localStorage.setItem('email', '');
