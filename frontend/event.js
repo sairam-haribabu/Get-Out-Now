@@ -92,6 +92,7 @@ function showEventDetails(response) {
 
 function attend_event(name, eventid){
     sdk.attendeventGet({'eventid':eventid, 'name':name}, {}, {}).then((response) => {
+        console.log("Abcd");
         response = response['data']['body']
         let button = $("<button class='btn btn-primary attending' type='submit' disabled> ATTENDING </button>")
         $("#attend-block").empty()
@@ -101,6 +102,7 @@ function attend_event(name, eventid){
 
 
 function userAttendingEvent(username, response) {
+    console.log("Did i attend")
     for(i in response) {
         if(response[i]['username'] == username) {
             return true
@@ -127,7 +129,7 @@ window.onload = function() {
             $("#attend-block").empty()
             $("#attend-block").append(button)
         } else {
-            let button = $("<button class='btn btn-primary attending' type='submit' onclick='attend_event(\"" + username, event_id + "\")> ATTEND EVENT </button>")
+            let button = $("<button class='btn btn-primary attending' type='submit' onclick='attend_event(\"" + username + "\",\"" + event_id + "\")'> ATTEND EVENT </button>")
             $("#attend-block").empty()
             $("#attend-block").append(button)
         }
