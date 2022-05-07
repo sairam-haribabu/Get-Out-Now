@@ -22,6 +22,10 @@ input, button {
     border: 5px solid #f5f0e1;
 }
 
+.note {
+    color: blue;
+}
+
 #bio {
     height: 100px;
 }
