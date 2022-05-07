@@ -25,7 +25,7 @@ i {
 }
 
 body {
-    background-color: #2A1B3D;
+    background-color: #2A1B3D !important;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -54,7 +54,7 @@ input {
 
 .go {
     font-size: 22px !important;
-    font-weight: 500;
+    font-weight: 400;
     text-align: center;
 }
 
@@ -63,7 +63,7 @@ button {
     font-weight: 500;
     height: 49px;
     width: 50px;
-    margin-left: -5px !important;
+    margin-left: -4px !important;
 }
 
 /* ------------------------------------------------------------ */

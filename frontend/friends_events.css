@@ -1,12 +1,12 @@
 i {
-    font-size: 30px !important;
-    color: black;
-    margin-right: 100px
+    font-size: 40px !important;
+    color: #8265a7;
+    margin-right: 30px
 }
 
 .navbar-nav {
-    background-color: lightcyan !important;
-    padding-top: 5px;
+    background-color: #2A1B3D;
+    padding-top: 20px;
     padding-bottom: 5px;
     position: fixed; 
     top: 0;
@@ -21,21 +21,19 @@ i {
 #logout {
     margin-right: 0px !important;
     float: right;
-    padding-right: 0px !important
+    padding-right: 0px !important;
 }
 
 body {
-    background-image: url('./wall2.jpeg');
-    background-size: cover;
-    background-position:50% 50%;
-    color: black;
+    background-color: #2A1B3D !important;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 
 /* ------------------------------------------------------------ */
 
 .main-text {
-    color: white;
+    color: #a4b3b6;
     font-size: 30px;
     font-weight: 500;
     margin-top: 100px;
@@ -44,18 +42,18 @@ body {
 }
 
 #display-block {
-    color: black;
+    color: #a4b3b6;
     padding: 25px;
-    background-color: lightcyan;
+    background-color: #8265a7;
     margin-bottom: 50px;
     text-align: center;
 }
 
 .event {
-    background-color: #022b44;
+    background-color: #8265a7;
     margin-right: 40px;
     padding: 15px;
-    color: white;
+    color: #a4b3b6;
     text-align: center;
 }
 
