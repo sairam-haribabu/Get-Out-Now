@@ -51,3 +51,7 @@ body {
 label {
     font-size: 20px;
 }
+
+.error{
+    color:red;
+}
