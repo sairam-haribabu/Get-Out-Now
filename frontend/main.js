@@ -174,7 +174,7 @@ function addPagination(events) {
         end = start + 9
         let e = events["all"].slice(start, end);
         console.log(e);
-        let button = $("<button class='btn btn-primary attending' type='submit' onclick='getSlice(\"" + i.toString() + "\")'> " + i.toString() + "</button>")
+        let button = $("<button class='btn btn-primary page' type='submit' onclick='getSlice(\"" + i.toString() + "\")'> " + i.toString() + "</button>")
         $("#paginationBar").append(button)
 
         if (i == 1) {
