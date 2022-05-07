@@ -322,3 +322,11 @@
         function logMessage(message){
             $('#log').append(message + '</br>');
         }
+
+        $(document).ready(function() {
+            localStorage.setItem('username', '');
+            localStorage.setItem('friendusername', '');
+            localStorage.setItem('email', '');
+            localStorage.setItem('event-id', '');
+            localStorage.setItem('mainuserfriends', '');    
+        })
