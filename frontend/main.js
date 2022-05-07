@@ -1,7 +1,5 @@
 var sdk = apigClientFactory.newClient();
 
-// window.onload = searchEvents();
-
 function myProfile() {
     localStorage.setItem('friendusername', "");
     location.href = './profile.html';
@@ -131,6 +129,6 @@ function searchEvents() {
     });
 }
 
-$(document).ready(function() {
-    searchEvents()
-})
+// $(document).ready(function() {
+//     searchEvents()
+// })

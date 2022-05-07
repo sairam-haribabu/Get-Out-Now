@@ -1,0 +1,47 @@
+body {
+    background-image: url('../frontend/wall2.jpeg');
+    background-size: cover;
+    background-position:50% 50%;
+
+}
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.container {
+    background-color: #F0FFFF;
+    margin: auto;
+    margin-top: 100px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    text-align: center;
+    width: 800px;
+    color: #1e3d59;
+    border: 5px solid #f5f0e1;
+}
+.heading {
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input, button {
+    margin: 10px;
+    width: 300px;
+}
+.log{
+    text-align: center;
+    margin:auto;
+}
+
+
