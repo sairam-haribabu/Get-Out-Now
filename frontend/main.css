@@ -5,7 +5,8 @@ i {
 }
 
 .navbar-nav {
-    background-color: #2A1B3D;
+    /* background-color: #2A1B3D; */
+    background-image: url("./purp.jpeg");
     padding-top: 20px;
     padding-bottom: 5px;
     position: fixed; 
@@ -21,11 +22,13 @@ i {
 #logout {
     margin-right: 0px !important;
     float: right;
-    padding-right: 0px !important;
+    padding-right: 0px !important
 }
 
 body {
-    background-color: #2A1B3D !important;
+    /* background-color: #2A1B3D !important; */
+    background-image: url("./purp.jpeg");
+    color: #a4b3b6 !important;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -69,9 +72,8 @@ button {
 /* ------------------------------------------------------------ */
 
 #display-block {
-    color: black;
-    padding: 25px;
-    margin-bottom: 50px;
+    padding: 5px;
+    margin-bottom: 5px;
     text-align: center;
 }
 

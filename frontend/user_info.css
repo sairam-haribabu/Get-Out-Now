@@ -3,13 +3,13 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-input, button {
-    margin: 10px;
-    width: 500px;
+input, button, select {
+    margin: 15px;
+    width: 500px !important;
+    height: 40px;
 }
 
 .container {
-    background-color: #F0FFFF;
     margin: auto;
     margin-top: 100px;
     padding-left: 40px;
@@ -18,12 +18,11 @@ input, button {
     padding-bottom: 45px;
     text-align: center;
     width: 800px;
-    color: #1e3d59;
-    border: 5px solid #f5f0e1;
 }
 
 .note {
-    color: blue;
+    color: #8265a7;
+    font-size: 18px;
 }
 
 #bio {
@@ -31,11 +30,28 @@ input, button {
 }
 
 body {
-    background-image: url('./wall2.jpeg');
-    background-size: cover;
-    background-position:50% 50%;
+    background-color: #2A1B3D !important;
+    color: #a4b3b6 !important;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .dropdown{
-    width: 300px;
     height: 100px;
+}
+
+#search {
+    background-color: #D83F87;
+    font-weight: 600;
+}
+
+#dp {
+    margin-left: 250px;
+}
+
+label {
+    font-size: 20px;
+}
+
+.error{
+    color:red;
 }

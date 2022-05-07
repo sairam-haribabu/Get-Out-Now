@@ -7,13 +7,22 @@ function myProfile() {
 }
 
 function friendsProfile(username) {
-    localStorage.setItem('friendusername', username);
-    location.href = './profile.html';
+    if(localStorage.getItem("username") == username) {
+        myProfile()
+    } else {
+        localStorage.setItem('friendusername', username);
+        location.href = './profile.html';
+    }
 }
 
 function show_event(id) {
     localStorage.setItem('event-id', id);
     location.href = './event.html';
+}
+
+function home() {
+    localStorage.setItem('category', "")
+    location.href = './main.html';
 }
 
 function getFriendsEvents(id) {
@@ -22,6 +31,8 @@ function getFriendsEvents(id) {
 }
 
 function logOut(){
+    localStorage.setItem('userlocation', '');   
+    localStorage.setItem('usercategory', '');   
     localStorage.setItem("username", "")
     localStorage.setItem("friendusername", "")
     localStorage.setItem("email", "")
@@ -174,10 +185,16 @@ function addPagination(events) {
 
 function searchEvents() {
     keywordEl = document.getElementById('keyword');
+    console.log("KEY", keywordEl.value)
     if (keywordEl == null) {
         keyword = "";
     } else {
         keyword = document.getElementById('keyword').value;
+    }
+
+    if(keyword.length > 0) {
+        $("#display-block").append($("<h2> Search results for " + keyword + "</h2>"))
+        $("#display-block").append($("<br>"))
     }
 
     // user is searching for event name, date, categories, location or all
@@ -188,10 +205,8 @@ function searchEvents() {
         console.log(response);
         response = response['data']['body'];
         console.log(response);
-
-        // getting div that holds row of users
-        var allDisplayDiv = document.getElementById('display-block');
-        allDisplayDiv.innerHTML = '';
+        
+        document.getElementById('display-block').innerHTML = '';
 
         if(response) {
             // PAGINATION
@@ -215,6 +230,14 @@ function searchEvents() {
     .catch((error) => {
         console.log('an error occurred', error);
     });
+}
+function getUserInfo(){
+    username=localStorage.getItem('username');
+    sdk.profileGet({'username':username}, {}, {}).then((response) => {
+        response = response['data']['body']
+        localStorage.setItem("userlocation",response['city'])
+        localStorage.setItem("usercategory",response['categories'])
+    })
 }
 
 // var $pagination = $('#pagination'),
@@ -252,5 +275,13 @@ function searchEvents() {
 // }
 
 $(document).ready(function() {
+    // document.getElementById('display-block').innerHTML = '';
+    if(localStorage.getItem('category') != null && localStorage.getItem('category') != "") {
+        $("#keyword").val(localStorage.getItem('category'))
+    }
     searchEvents()
+    if(localStorage.getItem('usercategory') == null || localStorage.getItem('userlocation') == null){
+        console.log("get user info");
+        getUserInfo();
+    }
 })

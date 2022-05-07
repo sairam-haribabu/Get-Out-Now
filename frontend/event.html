@@ -36,10 +36,10 @@
     <body>
         <nav class="navbar-nav">
             <div class="container">
-                <a class="navbar-brand" href="./main.html"> <i class="fa fa-home navicon"></i> </a>
+                <div class="navbar-brand" onclick="home()"> <i class="fa fa-home navicon"></i> </div>
                 <div class="navbar-brand" onclick="getFriendsEvents()"> <i class='fa fa-group navicon'></i> </div>
                 <div class="navbar-brand" onclick="myProfile()"> <i class='fa fa-user navicon'></i> </div>
-                <div class="navbar-brand" onclick="logOut()" id="logout"> <i class="fa fa-sign-out navicon"></i> </a>
+                <div class="navbar-brand" onclick="logOut()" id="logout"> <i class="fa fa-sign-out navicon"></i> </div>
             </div>
         </nav>
         <div class="container">
@@ -57,8 +57,8 @@
             </div>
             <div id="friends-block" class="block">
             </div>
-            <br>
-            <br>
+            <div id="categories-block" class="block">
+            </div>
             <div id="attraction-block" class="block">
             </div>
         </div>

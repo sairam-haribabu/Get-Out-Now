@@ -34,24 +34,36 @@ function submitUserData() {
     dp = document.getElementById('dp').files[0];
     email = document.getElementById('email').value;
     city=document.getElementById("autocomplete").value;
-    uploadPhoto(dp, username)
+    city = city.replace(/,/g, '').slice(0, -3);
+    console.log(city);
+    
+    if(username==null || username == "" || namee==null || namee == "" || 
+       bio==null || bio == "" || dp==null || dp == "" || email==null || email == "" || 
+       city==null || city == ""){
+         logMessage("Please fill in all the fields!");
+         window.scrollTo(0, 0);
+       }
+    else{
 
-    sdk.userinfoGet({"bio":bio, "name":namee, "username":username,"photo":dp['name'], "email":email, "city":city,"categories":selected}, {}, {}).then((response) => {
-        console.log(response)
-        if(response) {
-            location.href = './main.html';
-        }
-        document.getElementById('username').value = "";
-        document.getElementById('name').value = "";
-        document.getElementById('bio').value = "";
-        document.getElementById('dp').value = "";
-        document.getElementById('email').value = "";
-        document.getElementById('autocomplete').value = "";
+      uploadPhoto(dp, username)
 
-    })
-    .catch((error) => {
-        console.log('an error occurred', error);
-    });
+      sdk.userinfoGet({"bio":bio, "name":namee, "username":username,"photo":dp['name'], "email":email, "city":city,"categories":selected}, {}, {}).then((response) => {
+          console.log(response)
+          if(response) {
+              location.href = './main.html';
+          }
+          document.getElementById('username').value = "";
+          document.getElementById('name').value = "";
+          document.getElementById('bio').value = "";
+          document.getElementById('dp').value = "";
+          document.getElementById('email').value = "";
+          document.getElementById('autocomplete').value = "";
+
+      })
+      .catch((error) => {
+          console.log('an error occurred', error);
+      });
+  }
 }
 
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
@@ -81,6 +93,11 @@ function initMap() {
 function onPlaceChanged() {
   let val=document.getElementById("autocomplete").value;
   console.log(val);
+}
+
+function logMessage(message){
+  $("#error").html("");
+  $('#error').append(message + '</br>');
 }
 
 
