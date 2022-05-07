@@ -13,41 +13,55 @@
         <script src="./sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
         <script src="./sdk/lib/apiGatewayCore/utils.js"></script>  
         <script src="./sdk/apigClient.js"></script> 
-
-        <!-- jquery -->
-        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+        <!-- Cognito -->
+        <script src="../login/script/aws-sdk-2.487.0.min.js"></script>
+        <script src="../login/script/aws-cognito-sdk.min.js"></script>
+        <script src="../login/script/amazon-cognito-identity.min.js"></script>
+
+        <!-- Jquery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>  
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- My script and stylesheet -->
         <script src="event.js"></script>
         <link rel="stylesheet" href="event.css">
     </head>
-
     <body>
-        <div id="image-block" class="eventImage">
-        </div>
-        <div id="name-block" class="block">
-            
+        <nav class="navbar-nav">
+            <div class="container">
+                <a class="navbar-brand" href="./main.html"> <i class="fa fa-home navicon"></i> </a>
+                <a class="navbar-brand" href="./friends_events.html"> <i class='fa fa-group navicon'></i> </a>
+                <div class="navbar-brand" onclick="myProfile()"> <i class='fa fa-user navicon'></i> </div>
+                <div class="navbar-brand" onclick="logOut()" id="logout"> <i class="fa fa-sign-out navicon"></i> </a>
+            </div>
+        </nav>
+        <div class="container">
+            <div id="image-block" class="block">
+            </div>
+            <div id="name-block" class="block">
+            </div>
+            <div id="date-block" class="block">
+            </div>
+            <div id = "attend-block">
+            </div>
+            <div id="info-block" class="block">
+            </div>
+            <div id="ticket-block" class="block">
+            </div>
+            <div id="friends-block" class="block">
+            </div>
             <br>
-        </div>
-        <div id="details-block" class="block">
-            
             <br>
+            <div id="attraction-block" class="block">
+            </div>
         </div>
-        <div id="friends-block" class="block">
-    
-            <br>
-        </div>
-        <div id="tags-block" class="block">
-        </div>
-        <br><br>
-        <div id = "attend_button">
-        </div>
-       
     </body>
 </html>
 

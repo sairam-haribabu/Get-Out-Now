@@ -79,6 +79,12 @@
                 localStorage.setItem('username', $('#userNameInput').val());
                 console.log(localStorage.getItem('username'))
             }
+            if(localStorage.getItem('email') == null || localStorage.getItem('email') =='') {
+                console.log("setting email localstorage");
+                localStorage.setItem('email', $('#emailInput').val());
+                console.log(localStorage.getItem('emailInput'))
+            }
+
             if(newUser) {
                 location.href = '../frontend/user_info.html';
             } else {
@@ -130,7 +136,6 @@
                     onSuccess: function (result) {
                         logMessage('Logged in!');
                         switchToLoggedInView();
-
                         idToken = result.getIdToken().getJwtToken();
                         getCognitoIdentityCredentials();
                     },

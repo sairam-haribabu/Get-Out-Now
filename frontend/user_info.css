@@ -22,6 +22,10 @@ input, button {
     border: 5px solid #f5f0e1;
 }
 
+.note {
+    color: blue;
+}
+
 #bio {
     height: 100px;
 }
@@ -30,4 +34,8 @@ body {
     background-image: url('./wall2.jpeg');
     background-size: cover;
     background-position:50% 50%;
+}
+.dropdown{
+    width: 300px;
+    height: 100px;
 }
