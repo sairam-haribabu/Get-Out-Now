@@ -1,20 +1,178 @@
-.eImage {
-    display: block;
-    width: 500px;
-    height: 300px;
-    border: 5px solid black;
+.navbar-nav {
+    background-color: #2A1B3D;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    position: fixed; 
+    top: 0;
+    width: 100%; 
+    z-index: 100;
+}
+
+.navicon {
+    font-size: 40px !important;
+    color: #8265a7;
+    margin-right: 30px
+}
+
+.navicon:hover{
+    cursor: pointer;
+}
+
+#logout {
+    margin-right: 0px !important;
+    float: right;
+    padding-right: 0px !important;
+}
+
+body {
+    background-color: #2A1B3D;
+    color: #a4b3b6;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------------- */
+
+.mainImage {
+    width: 100%;
+    height: 500px;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
-.attending{
-    background-color: lightgreen;
-    border: black;
-}
-.attend{
-    background-color: lightblue;
-    border: black;
+
+#image-block {
+    margin-top: 100px !important;
+    border: 15px solid #44318D
 }
 
-.block{
-    padding: 10px;
+#name-block {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 30px;
 }
+
+#info-block {
+    font-size: 22px;
+    text-align: justify;
+}
+
+#attend-block {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.attending {
+    background-color: #D83F87;
+    border: 2px solid #D83F87;
+    width: 100%;
+}
+
+.attending:hover {
+    background-color: #44318D;
+    border: 2px solid #44318D;
+}
+
+#ticket-block {
+    margin-top: 70px;
+    font-size: 25px;
+    text-align: center;
+
+}
+
+#date-block {
+    margin-top: 40px;
+    font-size: 28px;
+    text-align: center;
+}
+
+#attraction-block {
+    text-align: center;
+    font-size: 25px;
+}
+
+.row {
+    text-align: center;
+}
+/* -----------------------------------  FRIENDS BLOCK --------------------------------------- */
+
+#friends-block {
+    margin-top: 100px;
+}
+
+.friend {
+    display: inline-block;
+    margin-right: 30px;
+    margin-left: 10px;
+    margin-top: 20px;
+    padding: 15px;
+    color: white;
+    text-align: center;
+}
+
+.friend-name {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.friend-image {
+    border: 5px solid #44318D;
+    height: 180px;
+    width: 100%;
+}
+
+.block {
+    margin-top: 50px;
+}
+
+.social {
+    text-decoration: none;
+    padding: 50px;
+    font-size: 30px;
+    width: 40px;
+}
+
+
+
+
+
+/* ---------------------- SOCIAL MEDIA STYLING ------------------  */
+
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+    font-size: 50px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+  
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+    font-size: 50px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+  
+.fa-youtube {
+    background: #bb0000;
+    color: white;
+    font-size: 50px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+  
+.fa-instagram {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+    color: white;
+    font-size: 50px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+  

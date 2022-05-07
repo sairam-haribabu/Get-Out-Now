@@ -88,9 +88,6 @@ $(document).ready(function() {
     sdk.profileGet({'username':username}, {}, {}).then((response) => {
         response = response['data']['body']
         console.log(response)
-        // userInfo = response['user']
-        // friendsInfo = response['friends']
-        // eventsInfo = response['events']
         userInfo = response
         friendsInfo = response['friends']
         eventsInfo = response['events']
@@ -112,9 +109,9 @@ $(document).ready(function() {
 
             let friendRow = $("<div class='row'> </div>")
             for(i in friendsInfo) {
-                let div = $("<div class='col-md-3 friend'> <div/>")
+                let div = $("<div class='col-md-2 friend'> <div/>")
                 let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + friendsInfo[i]['photo']
-                let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "'>  <div/>")
+                let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "' class='friend-image'>  <div/>")
                 $(div).append(divImage)
                 let divName = $("<div class='friend-name' onclick='friendProfile(\"" + friendsInfo[i]['username'] + "\")'>" + friendsInfo[i]['name'] +  "</a> <div/>")
                 $(div).append(divName)
@@ -129,7 +126,7 @@ $(document).ready(function() {
 
             let eventRow = $("<div class='row'> </div>")
             for(i in eventsInfo) {
-                let div = $("<div class='col-md-3 event'> <div/>")
+                let div = $("<div class='col-md-4 event'> <div/>")
                 let imgsrc = eventsInfo[i]['photo']
                 let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "'>  <div/>")
                 $(div).append(divImage)

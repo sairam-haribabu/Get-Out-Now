@@ -1,12 +1,12 @@
 i {
-    font-size: 30px !important;
-    color: black;
-    margin-right: 100px
+    font-size: 40px !important;
+    color: #8265a7;
+    margin-right: 30px
 }
 
 .navbar-nav {
-    background-color: lightcyan !important;
-    padding-top: 5px;
+    background-color: #2A1B3D;
+    padding-top: 20px;
     padding-bottom: 5px;
     position: fixed; 
     top: 0;
@@ -25,15 +25,12 @@ i {
 }
 
 body {
-    background-image: url('./wall2.jpeg');
-    background-size: cover;
-    background-position:50% 50%;
-    color: black;
+    background-color: #2A1B3D;
+    color: #a4b3b6;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .main {
-    background-color: lightcyan;
     margin-top: 130px !important;
     margin-bottom: 50px;
 }
@@ -41,8 +38,8 @@ body {
 
 /* ----------------------  User Data ---------------------- */
 #user-block {
-    padding: 40px;
-    background-color: lightcyan;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 #username {
@@ -65,6 +62,9 @@ body {
     height: 300px ;
     width: 300px ;
     text-align: center;
+    float: right;
+    border: 10px solid #D83F87;
+    border-radius: 50%;
 }
 
 /* ---------------------------------------------------------- */
@@ -72,21 +72,22 @@ body {
 
 /* ----------------------------  Event Data ---------------------- */
 #events-block, #friends-block {
-    padding: 40px;
-    background-color: lightcyan;
-    margin-top: 10px;
+    margin-top: 100px;
 }
 
 .event, .friend {
-    /* height: 300px !important;
-    width: 300px !important; */
-    background-color: #022b44;
+    background-color: #44318D;
     display: inline-block;
     margin-right: 30px;
-    margin-top: 30px;
+    margin-left: 10px;
+    margin-top: 20px;
     padding: 15px;
     color: white;
     text-align: center;
+}
+
+.friend {
+    background-color: #2A1B3D !important;
 }
 
 .event-name, .friend-name {
@@ -97,9 +98,12 @@ body {
 }
 
 img {
-    height: 230px;
-    width: 230px;
+    height: 100%;
+    width: 100% 
 }
 
+.friend-image {
+    border: 3px solid #D83F87;
+}
 /* ---------------------------------------------------------- */
 
