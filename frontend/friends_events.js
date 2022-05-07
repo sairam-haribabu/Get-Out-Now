@@ -31,7 +31,6 @@ function logOut(){
         cognitoUser.signOut();
         location.href = '../login/index.html';
     }
-    localStorage.setItem("username","")
 }
 
 function getFriendsEvents() {
