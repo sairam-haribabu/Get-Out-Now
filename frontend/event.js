@@ -127,7 +127,7 @@ window.onload = function() {
             $("#attend-block").empty()
             $("#attend-block").append(button)
         } else {
-            let button = $("<button class='btn btn-primary attending' type='submit'> ATTEND EVENT </button>")
+            let button = $("<button class='btn btn-primary attending' type='submit' onclick='attend_event(\"" + username, event_id + "\")> ATTEND EVENT </button>")
             $("#attend-block").empty()
             $("#attend-block").append(button)
         }
