@@ -28,7 +28,7 @@ i {
 body {
     /* background-color: #2A1B3D !important; */
     background-image: url("./purp.jpeg");
-    color: #a4b3b6;
+    color: #a4b3b6 !important;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -72,9 +72,8 @@ button {
 /* ------------------------------------------------------------ */
 
 #display-block {
-    color: black;
-    padding: 25px;
-    margin-bottom: 50px;
+    padding: 5px;
+    margin-bottom: 5px;
     text-align: center;
 }
 

@@ -51,10 +51,16 @@ function logOut(){
 
 function searchEvents() {
     keywordEl = document.getElementById('keyword');
+    console.log("KEY", keywordEl.value)
     if (keywordEl == null) {
         keyword = "";
     } else {
         keyword = document.getElementById('keyword').value;
+    }
+
+    if(keyword.length > 0) {
+        $("#display-block").append($("<h2> Search results for " + keyword + "</h2>"))
+        $("#display-block").append($("<br>"))
     }
 
     // user is searching for event name, date, categories, location or all
@@ -63,17 +69,15 @@ function searchEvents() {
 
         response = response['data']['body'];
         console.log(response);
-
-        // getting div that holds row of users
-        var allDisplayDiv = document.getElementById('display-block');
-        allDisplayDiv.innerHTML = '';
+        
+        document.getElementById('display-block').innerHTML = '';
 
         if(response) {
             // DISPLAYING USERS
             users = response['users']
 
             if (users.length > 0) {
-                let heading = $("<h4> SEARCH RESULTS BASED ON USER </h4>")
+                let heading = $("<h3> Results based on User </h3>")
                 $("#display-block").append(heading)
                 $("#display-block").append($("<br>"))
 
@@ -107,9 +111,9 @@ function searchEvents() {
             console.log(events)
             for(key in events) {
                 if(key != 'all') {
-                    let heading = $("<h4> SEARCH RESULTS BASED ON " + key + " </h4>")
-                    $("#display-block").append(heading)
-                    $("#display-block").append($("<br>"))
+                    // let heading = $("<h3> Results based on " + key + " </h3>")
+                    // $("#display-block").append(heading)
+                    // $("#display-block").append($("<br> <br>"))
                 }
 
                 let row = $("<div class='row'> </div>")
@@ -145,6 +149,7 @@ function searchEvents() {
 }
 
 $(document).ready(function() {
+    // document.getElementById('display-block').innerHTML = '';
     if(localStorage.getItem('category') != null && localStorage.getItem('category') != "") {
         $("#keyword").val(localStorage.getItem('category'))
     }
