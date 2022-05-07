@@ -15,6 +15,11 @@ function show_event(id) {
     location.href = './event.html';
 }
 
+function getFriendsEvents(id) {
+    localStorage.setItem('event-id', id);
+    location.href = './friends_events.html';
+}
+
 function logOut(){
     localStorage.setItem("username", "")
     localStorage.setItem("friendusername", "")
@@ -129,6 +134,6 @@ function searchEvents() {
     });
 }
 
-// $(document).ready(function() {
-//     searchEvents()
-// })
+$(document).ready(function() {
+    searchEvents()
+})

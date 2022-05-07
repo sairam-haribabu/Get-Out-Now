@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- api gateway generated sdk -->
+        <!-- API gateway -->
         <script src="./sdk/lib/axios/dist/axios.standalone.js"></script>
         <script src="./sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
         <script src="./sdk/lib/CryptoJS/rollups/sha256.js"></script>
@@ -30,26 +30,30 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- My script and stylesheet -->
-        <!-- Change as needed -->
+        <script src="friends_events.js"></script>
+        <link rel="stylesheet" href="friends_events.css">
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
-
-
-        <script src="profile.js"></script>
-        <link rel="stylesheet" href="profile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="jquery.twbsPagination.min.js"></script>
     </head>
 
     <body>
         <nav class="navbar-nav">
             <div class="container">
                 <a class="navbar-brand" href="./main.html"> <i class="fa fa-home"></i> </a>
-                <a class="navbar-brand" href="./friends_events.html"> <i class='fa fa-group'></i> </a>
+                <div class="navbar-brand" onclick="getFriendsEvents()"> <i class='fa fa-group'></i> </div>
                 <div class="navbar-brand" onclick="myProfile()"> <i class='fa fa-user icon'></i> </div>
                 <div class="navbar-brand" onclick="logOut()" id="logout"> <i class="fa fa-sign-out icon"></i> </a>
             </div>
         </nav>
-        <div class="container">
+
+        <div class="container main">
+            <div class="main-text"> My Friend's Events </div>
+            <br>
+            <br>
+            <div id="display-block">
+            </div>
         </div>
     </body>
 </html>
