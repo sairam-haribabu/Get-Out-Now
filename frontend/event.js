@@ -3,6 +3,7 @@ var sdk = apigClientFactory.newClient();
 function logOut(){
     localStorage.setItem("username","")
     localStorage.setItem("friendusername","")
+    localStorage.setItem("email", "")
     var userPoolId = 'us-east-1_fvK1OHbeR';
     var clientId = '543gs8p8cujqb4oe90gs88io3l';
     var poolData = { 
@@ -24,6 +25,10 @@ function myProfile() {
     location.href = './profile.html';
 }
 
+function getFriendsEvents(id) {
+    localStorage.setItem('event-id', id);
+    location.href = './friends_events.html';
+}
 
 function showEventDetails(response) {
     let img = $("<img src = '" + response["image"]["url"] + "' class='mainImage'>")

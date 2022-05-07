@@ -34,6 +34,11 @@ function myProfile() {
     location.href = './profile.html';
 }
 
+function getFriendsEvents(id) {
+    localStorage.setItem('event-id', id);
+    location.href = './friends_events.html';
+}
+
 function followFriend(me, friend) {
     console.log("followFriend");
     console.log(me,friend);
