@@ -3,6 +3,7 @@ var sdk = apigClientFactory.newClient();
 function logOut(){
     localStorage.setItem("username","")
     localStorage.setItem("friendusername","")
+    localStorage.setItem("email", "")
     var userPoolId = 'us-east-1_fvK1OHbeR';
     var clientId = '543gs8p8cujqb4oe90gs88io3l';
     var poolData = { 
