@@ -20,8 +20,17 @@ function logOut(){
 }
 
 function friendProfile(friendName) {
-    localStorage.setItem('friendusername', friendName);
-    location.href = './profile.html';
+    if(localStorage.getItem("username") == friendName) {
+        myProfile()
+    } else {
+        localStorage.setItem('friendusername', friendName);
+        location.href = './profile.html';
+    }
+}
+
+function home() {
+    localStorage.setItem('category', "")
+    location.href = './main.html';
 }
 
 function eventPage(id) {
@@ -117,9 +126,9 @@ $(document).ready(function() {
             for(i in friendsInfo) {
                 let div = $("<div class='col-md-2 friend'> <div/>")
                 let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + friendsInfo[i]['photo']
-                let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "' class='friend-image'>  <div/>")
+                let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "' class='friend-image' onclick='friendProfile(\"" + friendsInfo[i]['username'] + "\")'>  <div/>")
                 $(div).append(divImage)
-                let divName = $("<div class='friend-name' onclick='friendProfile(\"" + friendsInfo[i]['username'] + "\")'>" + friendsInfo[i]['name'] +  "</a> <div/>")
+                let divName = $("<div class='friend-name'>" + friendsInfo[i]['name'] +  " <div/>")
                 $(div).append(divName)
                 $(friendRow).append(div)
             }
@@ -134,9 +143,9 @@ $(document).ready(function() {
             for(i in eventsInfo) {
                 let div = $("<div class='col-md-4 event'> <div/>")
                 let imgsrc = eventsInfo[i]['photo']
-                let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "'>  <div/>")
+                let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "' onclick='eventPage(\"" + eventsInfo[i]['eventid'] + "\")'>  <div/>")
                 $(div).append(divImage)
-                let divName = $("<div class='event-name' onclick='eventPage(\"" + eventsInfo[i]['eventid'] + "\")'>" + eventsInfo[i]['name'] +  "</a> <div/>")
+                let divName = $("<div class='event-name'>" + eventsInfo[i]['name'] +  " <div/>")
                 $(div).append(divName)
                 $(eventRow).append(div)
             }

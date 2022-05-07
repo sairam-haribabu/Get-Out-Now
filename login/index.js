@@ -47,6 +47,9 @@
         }
 
         function switchToLogInView(){
+            localStorage.setItem('username', "");
+            localStorage.setItem('email', "");
+            localStorage.setItem('category', "");
             $("#userNameInput").val('');
             $("#passwordInput").val('');
             $("#emailInput").hide();

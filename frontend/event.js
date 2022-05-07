@@ -19,6 +19,14 @@ function logOut(){
     localStorage.setItem("username","")
 }
 
+function friendProfile(friendName) {
+    if(localStorage.getItem("username") == friendName) {
+        myProfile()
+    } else {
+        localStorage.setItem('friendusername', friendName);
+        location.href = './profile.html';
+    }
+}
 
 function myProfile() {
     localStorage.setItem('friendusername', "")
@@ -28,6 +36,16 @@ function myProfile() {
 function getFriendsEvents(id) {
     localStorage.setItem('event-id', id);
     location.href = './friends_events.html';
+}
+
+function home() {
+    localStorage.setItem('category', "")
+    location.href = './main.html';
+}
+
+function homeSearch(category) {
+    localStorage.setItem('category', category)
+    location.href = './main.html';
 }
 
 function showEventDetails(response) {
@@ -47,12 +65,14 @@ function showEventDetails(response) {
     let address = response['instances'][0]['venue']['name'] + ", " + response['instances'][0]['venue']['location']['address'] + ", " + response['instances'][0]['venue']['location']['city']
     $("#date-block").append($("<div> On " + response['instances'][0]['date'] + " At " + address + " </div>"))
 
-    $("#ticket-block").append($("<h4> Click here to get your ticket from TicketMasters! </h4>"))
+    $("#ticket-block").append($("<h4> Click here to get your ticket from TicketMaster! </h4>"))
     $("#ticket-block").append($("<a href='" + response['url'] + "'> GET TICKETS </a> </div>"))
 
     if(response['attractions']) {
         let attractions = response['attractions']['name']['externalLinks']
-        attractionKeys = Object.keys(attractions)
+        // if(attractions) {
+        //     attractionKeys = Object.keys(attractions)
+        // }
         $("#attraction-block").append($("<h4> FOLLOW US </h4>"))
         $("#attraction-block").append($("<br>"))
         let rowDiv = $("<div class='row'> </div>")
@@ -65,7 +85,10 @@ function showEventDetails(response) {
         // }
         attractionKeys = ['facebook', 'twitter', 'instagram', 'youtube']
         for(i in attractionKeys) {
-            let div = $("<div class='col-md-1'> <a href ='" + attractions[attractionKeys[i]] + "' class='social fa fa-" + attractionKeys[i] + "'> </a> </div>")
+            let div = $("<div class='col-md-1'> <a class='social fa fa-" + attractionKeys[i] + "'> </a> </div>")
+            if(attractions) {
+                div = $("<div class='col-md-1'> <a href ='" + attractions[attractionKeys[i]] + "' class='social fa fa-" + attractionKeys[i] + "'> </a> </div>")
+            }
             $(rowDiv).append(div)
         }
         $("#attraction-block").append(rowDiv)
@@ -79,13 +102,19 @@ function showEventDetails(response) {
         for(i in response['attendees']) {
             let div = $("<div class='col-md-2 friend'> <div/>")
             let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + response['attendees'][i]['photo']
-            let divImage = $("<div class='friend-image'> <img src = '" + imgsrc + "' class='friend-image'>  <div/>")
+            let divImage = $("<div> <img src = '" + imgsrc + "' class='friend-image' onclick='friendProfile(\"" + response['attendees'][i]['username'] + "\")'>  <div/>")
             $(div).append(divImage)
-            let divName = $("<div class='friend-name' onclick='friendProfile(\"" + response['attendees'][i]['username'] + "\")'>" + response['attendees'][i]['name'] +  "</a> <div/>")
+            let divName = $("<div class='friend-name'>" + response['attendees'][i]['name'] +  " <div/>")
             $(div).append(divName)
             $(friendRow).append(div)
         }
         $("#friends-block").append(friendRow)
+    }
+    
+    $("#categories-block").append($("<h3> Find more such events </h3>"))
+    for(i in response['categories']) {
+        let div = $("<span class='category' onclick='homeSearch(\"" + response['categories'][i] + "\")'>" + response['categories'][i] + "</span>")
+        $("#categories-block").append(div)
     }
 }
 

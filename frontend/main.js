@@ -6,13 +6,22 @@ function myProfile() {
 }
 
 function friendsProfile(username) {
-    localStorage.setItem('friendusername', username);
-    location.href = './profile.html';
+    if(localStorage.getItem("username") == username) {
+        myProfile()
+    } else {
+        localStorage.setItem('friendusername', username);
+        location.href = './profile.html';
+    }
 }
 
 function show_event(id) {
     localStorage.setItem('event-id', id);
     location.href = './event.html';
+}
+
+function home() {
+    localStorage.setItem('category', "")
+    location.href = './main.html';
 }
 
 function getFriendsEvents(id) {
@@ -136,5 +145,8 @@ function searchEvents() {
 }
 
 $(document).ready(function() {
+    if(localStorage.getItem('category') != null && localStorage.getItem('category') != "") {
+        $("#keyword").val(localStorage.getItem('category'))
+    }
     searchEvents()
 })

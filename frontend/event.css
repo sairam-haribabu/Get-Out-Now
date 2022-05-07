@@ -1,7 +1,8 @@
 .navbar-nav {
     background-color: #2A1B3D;
-    padding-top: 20px;
+    padding-top: 30px;
     padding-bottom: 5px;
+    padding-left: 5px;
     position: fixed; 
     top: 0;
     width: 100%; 
@@ -11,7 +12,8 @@
 .navicon {
     font-size: 40px !important;
     color: #8265a7;
-    margin-right: 30px
+    margin-right: 38px;
+    margin-left: 12px;
 }
 
 .navicon:hover{
@@ -88,8 +90,19 @@ body {
 #attraction-block {
     text-align: center;
     font-size: 25px;
+    margin-top: 300px;
+    margin-bottom: 50px;
 }
 
+#categories-block {
+    text-align: center;
+}
+
+.category {
+    margin-right: 30px;
+    text-decoration: underline;
+    font-size: 22px;
+}
 .row {
     text-align: center;
 }
@@ -117,8 +130,8 @@ body {
 }
 
 .friend-image {
-    border: 5px solid #44318D;
-    height: 180px;
+    border: 8px solid #44318D;
+    height: 150px;
     width: 100%;
 }
 
@@ -131,11 +144,8 @@ body {
     padding: 50px;
     font-size: 30px;
     width: 40px;
+    color: white !important;
 }
-
-
-
-
 
 /* ---------------------- SOCIAL MEDIA STYLING ------------------  */
 
