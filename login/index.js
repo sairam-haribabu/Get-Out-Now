@@ -24,11 +24,8 @@
             $("#confirmPasswordInput").hide();
             $("#logInButton").hide();
             $("#registerButton").hide();
-            $("#bucketNameInput").hide();
             $("#verificationCodeInput").show();
             $("#verifyCodeButton").show();
-            $("#listS3ObjectsButton").hide();
-            $("#logOutButton").hide();
         }
 
         function switchToRegisterView(){
@@ -40,9 +37,6 @@
             $("#registerButton").show();
             $("#verificationCodeInput").hide();
             $("#verifyCodeButton").hide();
-            $("#listS3ObjectsButton").hide();
-            $("#bucketNameInput").hide();
-            $("#logOutButton").hide();
             newUser = true
         }
 
@@ -57,9 +51,6 @@
             $("#registerButton").show();
             $("#verificationCodeInput").hide();
             $("#verifyCodeButton").hide();
-            $("#listS3ObjectsButton").hide();
-            $("#bucketNameInput").hide();
-            $("#logOutButton").hide();
         }
 
         function switchToLoggedInView(){
@@ -71,9 +62,6 @@
             $("#registerButton").hide();
             $("#verificationCodeInput").hide();
             $("#verifyCodeButton").hide();
-            $("#listS3ObjectsButton").show();
-            $("#bucketNameInput").show();
-            $("#logOutButton").show();
             
             if(localStorage.getItem('username') == null || localStorage.getItem('username') =='') {
                 localStorage.setItem('username', $('#userNameInput').val());
@@ -220,19 +208,6 @@
         }
 
         /*
-        Starting point for AWS List S3 Objects flow with input validation
-        */
-        function listS3Objects(){
-            if(!$('#bucketNameInput').val()){
-                logMessage('Please enter the name of the S3 Bucket!');
-            }else{
-                $("#loader").show();
-                getAWSS3BucketObjects();
-            }
-            
-        }
-
-        /*
         This method will get temporary credentials for AWS using the IdentityPoolId and the Id Token recieved from AWS Cognito authentication provider.
         */
         function getCognitoIdentityCredentials(){
@@ -256,32 +231,6 @@
                     logMessage('AWS Access Key: '+ AWS.config.credentials.accessKeyId);
                     logMessage('AWS Secret Key: '+ AWS.config.credentials.secretAccessKey);
                     logMessage('AWS Session Token: '+ AWS.config.credentials.sessionToken);
-                }
-
-                $("#loader").hide();
-            });
-        }
-
-        /*
-        This method will use AWS S3 SDK to get a list of S3 bucket object.
-        Before using this method, AWS Credentials must be set in AWS config.
-        */
-        function getAWSS3BucketObjects(){            
-            var s3 = new AWS.S3();
-
-            var params = {
-                Bucket: $("#bucketNameInput").val()
-            };
-
-            s3.listObjects(params, function(err, data) {
-                if (err) logMessage(err.message);
-                else{
-                    logMessage('');
-                    logMessage('====== S3 Bucket Objects ======');
-                    data.Contents.forEach(element => {
-                        logMessage(element.Key);
-                    });
-                    logMessage('');
                 }
 
                 $("#loader").hide();
