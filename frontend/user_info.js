@@ -34,6 +34,8 @@ function submitUserData() {
     dp = document.getElementById('dp').files[0];
     email = document.getElementById('email').value;
     city=document.getElementById("autocomplete").value;
+    city = city.replace(/,/g, '').slice(0, -3);
+    console.log(city);
     
     if(username==null || username == "" || namee==null || namee == "" || 
        bio==null || bio == "" || dp==null || dp == "" || email==null || email == "" || 
