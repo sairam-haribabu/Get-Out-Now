@@ -102,17 +102,18 @@ img {
 
 /* pagination position styling */
 .pagination_section {
-    position: absolute;
-    top: 500px;
-    right: 230px;
+    position: absolute !important;
+    bottom: 0 !important;
+    /* top: 500px;
+    right: 230px; */
 }
  
 /* pagination styling */
-.pagination_section a {
+/* .pagination_section a {
     color: white;
     padding: 10px 18px;
     text-decoration: none;
-}
+} */
  
 /* pagination hover effect on non-active */
 .pagination_section a:hover:not(.active) {
