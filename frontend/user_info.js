@@ -24,9 +24,11 @@ function submitUserData() {
     namee = document.getElementById('name').value;
     bio = document.getElementById('bio').value;
     dp = document.getElementById('dp').files[0];
+    email = document.getElementById('email').value;
     console.log(dp['name'])
     uploadPhoto(dp, username)
     console.log("B")
+    console.log(email)
     sdk.userinfoGet({"bio":bio, "name":namee, "username":username,"photo":dp['name']}, {}, {}).then((response) => {
         console.log(response)
         if(response) {
@@ -36,6 +38,8 @@ function submitUserData() {
         document.getElementById('name').value = "";
         document.getElementById('bio').value = "";
         document.getElementById('dp').value = "";
+        document.getElementById('email').value = "";
+
     })
     .catch((error) => {
         console.log('an error occurred', error);
@@ -45,4 +49,5 @@ function submitUserData() {
 
 $(document).ready(function() {
     $("#username").val(localStorage.getItem('username'));
+    $("#email").val(localStorage.getItem('email'));
 })
