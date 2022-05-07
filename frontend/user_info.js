@@ -29,7 +29,7 @@ function submitUserData() {
     uploadPhoto(dp, username)
     console.log("B")
     console.log(email)
-    sdk.userinfoGet({"bio":bio, "name":namee, "username":username,"photo":dp['name']}, {}, {}).then((response) => {
+    sdk.userinfoGet({"bio":bio, "name":namee, "username":username,"photo":dp['name'], "email":email}, {}, {}).then((response) => {
         console.log(response)
         if(response) {
             location.href = './main.html';

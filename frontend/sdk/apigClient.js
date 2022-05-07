@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/beta';
+    var invokeUrl = 'https://xlvb6nuhve.execute-api.us-east-1.amazonaws.com/alpha';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -338,13 +338,13 @@ apigClientFactory.newClient = function (config) {
     apigClient.userinfoGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['photo', 'username', 'bio', 'name'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['photo', 'username', 'bio', 'email', 'name'], ['body']);
         
         var userinfoGetRequest = {
             verb: 'get'.toUpperCase(),
             path: pathComponent + uritemplate('/userinfo').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['photo', 'username', 'bio', 'name']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['photo', 'username', 'bio', 'email', 'name']),
             body: body
         };
         
