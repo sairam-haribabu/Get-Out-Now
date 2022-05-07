@@ -20,16 +20,23 @@ function uploadPhoto(data, username){
 
 
 function submitUserData() {
+    var selected = [];
+    for (var option of document.getElementById('categories').options)
+    {
+        if (option.selected) {
+            selected.push(option.value);
+        }
+    } 
+    console.log(selected);
     username = document.getElementById('username').value;
     namee = document.getElementById('name').value;
     bio = document.getElementById('bio').value;
     dp = document.getElementById('dp').files[0];
     email = document.getElementById('email').value;
-    console.log(dp['name'])
+    city=document.getElementById("autocomplete").value;
     uploadPhoto(dp, username)
-    console.log("B")
-    console.log(email)
-    sdk.userinfoGet({"bio":bio, "name":namee, "username":username,"photo":dp['name'], "email":email}, {}, {}).then((response) => {
+
+    sdk.userinfoGet({"bio":bio, "name":namee, "username":username,"photo":dp['name'], "email":email, "city":city,"categories":selected}, {}, {}).then((response) => {
         console.log(response)
         if(response) {
             location.href = './main.html';
@@ -39,6 +46,7 @@ function submitUserData() {
         document.getElementById('bio').value = "";
         document.getElementById('dp').value = "";
         document.getElementById('email').value = "";
+        document.getElementById('autocomplete').value = "";
 
     })
     .catch((error) => {
@@ -46,8 +54,53 @@ function submitUserData() {
     });
 }
 
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+let autocomplete;
+const countryRestrict = { country: "us" };
+
+function initMap() {
+  // Create the autocomplete object and associate it with the UI input control.
+  // Restrict the search to the default country, and to place type "cities".
+  autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("autocomplete"),
+    {
+      types: ["(cities)"],
+      componentRestrictions: countryRestrict,
+      fields: ["geometry"],
+    }
+  );
+  autocomplete.addListener("place_changed", onPlaceChanged);
+  // Add a DOM event listener to react when the user selects a country.
+//   document
+//     .getElementById("country")
+//     .addEventListener("change", setAutocompleteCountry);
+}
+
+// When the user selects a city, get the place details for the city and
+// zoom the map in on the city.
+function onPlaceChanged() {
+  let val=document.getElementById("autocomplete").value;
+  console.log(val);
+}
+
+
+// Set the country restriction based on user input.
+// Also center and zoom the map on the given country.
+function setAutocompleteCountry() {
+  const country = document.getElementById("country").value;
+
+  if (country == "all") {
+    autocomplete.setComponentRestrictions({ country: [] });
+  } else {
+    autocomplete.setComponentRestrictions({ country: country });
+  }
+}
+
+window.initMap = initMap;
+
 
 $(document).ready(function() {
     $("#username").val(localStorage.getItem('username'));
     $("#email").val(localStorage.getItem('email'));
+
 })

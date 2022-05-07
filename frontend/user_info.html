@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- location -->
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+            <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=places&v=weekly"
+            defer
+            ></script>
+ 
         <!-- Api gateway -->
         <script src="./sdk/lib/axios/dist/axios.standalone.js"></script>
         <script src="./sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
@@ -39,6 +46,35 @@
             <input type="email" id="email" placeholder="enter email" readonly>
             <br>
             <input type="textarea" id="bio" placeholder="enter bio">
+            <br>
+            <input id="autocomplete" placeholder="Enter your preferred city" type="text" />
+             <!-- <div id="controls">
+              <select id="country">
+                <option value="all">All</option>
+                <option value="ca">Canada</option>
+                <option value="us" selected>U.S.A.</option>
+              </select>
+            </div> -->
+            <div id="listing">
+                <table id="resultsTable">
+                  <tbody id="results"></tbody>
+                </table>
+            </div>
+            <br>
+            <label for="categories">Select your interests</label>
+            <br>
+            <select id="categories" multiple="multiple" class="dropdown">
+                <option value="dog">Sports</option>
+                <option value="cat">Baseball</option>
+                <option value="rabbit">Football</option>
+                <option value="parrot">Hockey</option>
+                <option value="parrot">Music</option>
+                <option value="parrot">Rock</option>
+                <option value="parrot">Pop</option>
+                <option value="parrot">Theatre</option>
+                <option value="parrot">Musical</option>
+                <option value="parrot">Performance Art</option>
+            </select>
             <br>
             <input type="file" id="dp" placeholder="upload a profile picture">
             <br>

@@ -338,13 +338,13 @@ apigClientFactory.newClient = function (config) {
     apigClient.userinfoGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['photo', 'username', 'bio', 'email', 'name'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['photo', 'categories', 'username', 'email', 'name', 'city', 'bio'], ['body']);
         
         var userinfoGetRequest = {
             verb: 'get'.toUpperCase(),
             path: pathComponent + uritemplate('/userinfo').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['photo', 'username', 'bio', 'email', 'name']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['photo', 'categories', 'username', 'email', 'name', 'city', 'bio']),
             body: body
         };
         
