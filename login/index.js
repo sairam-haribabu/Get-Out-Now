@@ -286,5 +286,8 @@ $(document).ready(function() {
     localStorage.setItem('friendusername', '');
     localStorage.setItem('email', '');
     localStorage.setItem('event-id', '');
-    localStorage.setItem('mainuserfriends', '');    
+    localStorage.setItem('mainuserfriends', '');
+    localStorage.setItem('userlocation', '');   
+    localStorage.setItem('usercategory', '');     
+
 })
