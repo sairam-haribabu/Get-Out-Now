@@ -54,7 +54,7 @@ function logOut(){
 
 function displayUsers(users) {
     if (users.length > 0) {
-        let heading = $("<h4> SEARCH RESULTS BASED ON USER </h4>")
+        let heading = $("<h4> Search results based on user...</h4>")
         $("#display-block").append(heading)
         $("#display-block").append($("<br>"))
 
@@ -85,52 +85,23 @@ function displayUsers(users) {
 }
 
 function displayEvents(events) {
+    $("#display-block").empty();
     console.log(events)
     for(key in events) {
         if(key != 'all') {
-            let heading = $("<h4> SEARCH RESULTS BASED ON " + key + " </h4>")
+            let heading = $("<h4> Search results based on " + key + "...</h4>")
             $("#display-block").append(heading)
             $("#display-block").append($("<br>"))
         }
 
-        let row = $("<div class='row'> </div>")
-        for(i in events[key]) {
-            let event = events[key][i]
-            if(i%3 == 0) {
-                if(i != 0) {
-                    $("#display-block").append(row)
-                    $("#display-block").append($("<br>"))
-                }
-                $(row).append($("<div class='col-md-1'> </div>"))
-                row = $("<div class='row'> </div>")
-                $(row).append($("<div class='col-md-1'> </div>"))
-            }
-            let div = $("<div class='event col-md-3'> </div>")
-            let imgsrc = event['image']
-            let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "' onclick='show_event(\"" + event['id'] + "\")'>  <div/>")
-            $(div).append(divImage)
-            let divName = $("<div class='event-name'>" + event['name'] + "<div/>")
-            $(div).append(divName)
-            $(row).append(div)
-        }
-
-        if(i == 0) {
-            $("#display-block").append(row)
-        }
+        displayAllEvents(events[key]);
     }
 }
 
 function displayAllEvents(events) {
-    console.log(events);
-    console.log(events.length);
-    console.log(events[0]);
-    console.log("printed event 0");
-    $("#display-block").empty();
     let row = $("<div class='row'> </div>")
     for(i in events) {
         let event = events[i];
-        console.log(i);
-        console.log(event);
         if(i%3 == 0) {
             if(i != 0) {
                 $("#display-block").append(row)
@@ -145,8 +116,6 @@ function displayAllEvents(events) {
         let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "' onclick='show_event(\"" + event['id'] + "\")'>  <div/>")
         $(div).append(divImage)
         let divName = $("<div class='event-name'>" + event['name'] + "<div/>")
-        console.log("appending " + event["name"] + " div");
-        console.log(div);
         $(div).append(divName)
         $(row).append(div)
     }
@@ -156,24 +125,21 @@ function displayAllEvents(events) {
 
 
 function getSlice(page){
+    $("#display-block").empty();
     page = parseInt(page);
     start= (page - 1) * 9;
     end = start + 9;
     let e = totalEvents.slice(start, end);
-    console.log("now have slice the following");
-    console.log(e);
     displayAllEvents(e);
 }
 
 
-function addPagination(events) {
-    totalPages = Math.ceil(events["all"].length / 9);
+function addPagination() {
+    totalPages = Math.ceil(totalEvents.length / 9);
 
     for(var i = 1; i <= totalPages; i++) {
         start= (i - 1) * 9;
         end = start + 9
-        let e = events["all"].slice(start, end);
-        console.log(e);
         let button = $("<button class='btn btn-primary page' type='submit' onclick='getSlice(\"" + i.toString() + "\")'> " + i.toString() + "</button>")
         $("#paginationBar").append(button)
 
@@ -183,40 +149,24 @@ function addPagination(events) {
     }
 }
 
-function searchEvents() {
-    document.getElementById('display-block').innerHTML = '';
-    keywordEl = document.getElementById('keyword');
-    console.log("KEY", keywordEl.value)
-    if (keywordEl == null) {
-        keyword = "";
-    } else {
-        keyword = document.getElementById('keyword').value;
-    }
 
-    if(keyword.length > 0) {
-        $("#display-block").append($("<h2> Search results for " + keyword + "</h2>"))
-        $("#display-block").append($("<br>"))
-    }
-
+function executeSearch(keyword) {
+    console.log("keyword: " + keyword);
     // user is searching for event name, date, categories, location or all
     sdk.searchGet({'query':keyword}, {}, {}).then((response) => {
+        console.log("KEY: " + keyword);
         document.getElementById('keyword').value = ""; // clearing search for next search
-
+        console.log(localStorage.getItem("userlocation"));
         console.log("response::");
         console.log(response);
         response = response['data']['body'];
         console.log(response);
 
         if(response) {
-            // PAGINATION
-            // totalRecords = records.length;
-            // totalPages = Math.ceil(totalRecords / recPerPage);
-
             if ("all" in response["events"]) {
                 // DISPLAYING EVENTS
                 totalEvents = response["events"]["all"];
-                // displayAllEvents(response['events']["all"]);
-                addPagination(response['events'])
+                addPagination();
             } else {
                 // DISPLAYING USERS
                 displayUsers(response['users']);
@@ -230,6 +180,27 @@ function searchEvents() {
         console.log('an error occurred', error);
     });
 }
+
+
+function searchEvents() {
+    document.getElementById('display-block').innerHTML = '';
+    keywordEl = document.getElementById('keyword');
+    $("#paginationBar").empty();
+    if (keywordEl.value.length == 0) { // most general search
+        if (totalEvents == null) {
+            keyword = localStorage.getItem("userlocation") + " + " + localStorage.getItem("usercategory");
+            executeSearch(keyword);
+        } else {
+            addPagination();
+        }
+    } else {
+        keyword = document.getElementById('keyword').value;
+        // $("#display-block").append($("<h2> Search results for " + keyword + "</h2>"))
+        // $("#display-block").append($("<br>"))
+        executeSearch(keyword)
+    }
+}
+
 function getUserInfo(){
     username=localStorage.getItem('username');
     sdk.profileGet({'username':username}, {}, {}).then((response) => {
@@ -239,40 +210,6 @@ function getUserInfo(){
     })
 }
 
-// var $pagination = $('#pagination'),
-// totalRecords = 0,
-// records = [],
-// displayRecords = [],
-// recPerPage = 9,
-// page = 1,
-// totalPages = 0; 
-// $.ajax({
-//       url: "http://dummy.restapiexample.com/api/v1/employees",
-//       async: true,
-//       dataType: 'json',
-//       success: function (data) {
-//                   records = data;
-//                   console.log(records);
-//                   totalRecords = records.length;
-//                   totalPages = Math.ceil(totalRecords / recPerPage);
-//                   apply_pagination();
-//       }
-// });
-
-// function apply_pagination() {
-//       $pagination.twbsPagination({
-//             totalPages: totalPages,
-//             visiblePages: 6,
-//             onPageClick: function (event, page) {
-//                   displayRecordsIndex = Math.max(page - 1, 0) * recPerPage;
-//                   endRec = (displayRecordsIndex) + recPerPage;
-                 
-//                   displayRecords = records.slice(displayRecordsIndex, endRec);
-//                   generate_table();
-//             }
-//       });
-// }
-
 $(document).ready(function() {
     if(localStorage.getItem('username').length <= 0) {
         logOut();
@@ -280,9 +217,15 @@ $(document).ready(function() {
     if(localStorage.getItem('category') != null && localStorage.getItem('category') != "") {
         $("#keyword").val(localStorage.getItem('category'))
     }
-    searchEvents()
-    if(localStorage.getItem('usercategory') == null || localStorage.getItem('userlocation') == null){
+    if(localStorage.getItem('usercategory').length == 0 || localStorage.getItem('userlocation').length == 0){
         console.log("get user info");
-        getUserInfo();
+        getUserInfo()
     }
+})
+
+$(window).on('load', function(){
+    setTimeout(function() {
+        console.log("searching");
+        searchEvents();
+    }, 100);
 })
