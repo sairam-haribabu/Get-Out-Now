@@ -62,7 +62,7 @@ function showEventDetails(response) {
         $("#info-block").append(response['note'])
     }
 
-    let address = response['venue']['name'] + ", " + response['venue']['location']['address'] + ", " + response['venue']['location']['city']
+    let address = response['venue']['name'] + ", " + response['venue']['address'] + ", " + response['venue']['location']['city']
     $("#date-block").append($("<div> On " + response['date'] + " At " + address + " </div>"))
 
     $("#ticket-block").append($("<h4> Click here to get your ticket from TicketMaster! </h4>"))

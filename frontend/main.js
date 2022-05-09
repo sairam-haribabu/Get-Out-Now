@@ -156,11 +156,7 @@ function executeSearch(keyword) {
     sdk.searchGet({'query':keyword}, {}, {}).then((response) => {
         console.log("KEY: " + keyword);
         document.getElementById('keyword').value = ""; // clearing search for next search
-        console.log(localStorage.getItem("userlocation"));
-        console.log("response::");
-        console.log(response);
         response = response['data']['body'];
-        console.log(response);
 
         if(response) {
             if ("all" in response["events"]) {
@@ -225,7 +221,6 @@ $(document).ready(function() {
 
 $(window).on('load', function(){
     setTimeout(function() {
-        console.log("searching");
         searchEvents();
     }, 100);
 })
