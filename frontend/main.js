@@ -90,6 +90,7 @@ function displayEvents(events) {
     for(key in events) {
         if(key != 'all') {
             let heading = $("<h4> Search results based on " + key + "...</h4>")
+            $("#display-block").append($("<br>"))
             $("#display-block").append(heading)
             $("#display-block").append($("<br>"))
         }
@@ -136,7 +137,6 @@ function getSlice(page){
 
 function addPagination() {
     totalPages = Math.ceil(totalEvents.length / 9);
-
     for(var i = 1; i <= totalPages; i++) {
         start= (i - 1) * 9;
         end = start + 9
@@ -169,7 +169,6 @@ function executeSearch(keyword) {
                 // DISPLAYING EVENTS
                 displayEvents(response['events']);
             }
-            
         }
     })
     .catch((error) => {
