@@ -53,6 +53,7 @@ function logOut(){
 }
 
 function displayUsers(users) {
+    $("#display-block").empty();
     if (users.length > 0) {
         let heading = $("<h4> Search results based on user...</h4>")
         $("#display-block").append(heading)
@@ -78,14 +79,11 @@ function displayUsers(users) {
             $(div).append(divName)
             $(row).append(div)
         }
-        if(i == 0) {
-            $("#display-block").append(row)
-        }
+        $("#display-block").append(row)
     }
 }
 
 function displayEvents(events) {
-    $("#display-block").empty();
     console.log(events)
     for(key in events) {
         if(key != 'all') {
@@ -158,6 +156,8 @@ function executeSearch(keyword) {
         document.getElementById('keyword').value = ""; // clearing search for next search
         response = response['data']['body'];
 
+        console.log("response...");
+        console.log(response);
         if(response) {
             if ("all" in response["events"]) {
                 // DISPLAYING EVENTS
@@ -167,6 +167,8 @@ function executeSearch(keyword) {
                 // DISPLAYING USERS
                 displayUsers(response['users']);
                 // DISPLAYING EVENTS
+                console.log("Trying to get len of keys");
+                console.log(Object.keys(response['events']).length);
                 displayEvents(response['events']);
             }
         }
