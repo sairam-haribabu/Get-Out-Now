@@ -192,8 +192,12 @@ function searchEvents() {
     $("#paginationBar").empty();
     if (keywordEl.value.length == 0) { // most general search
         if (totalEvents == null) {
-            keyword = localStorage.getItem("userlocation") + " + " + localStorage.getItem("usercategory");
-            executeSearch(keyword);
+            if (localStorage.getItem('userLocation').length == 0 && localStorage.getItem('usercategory').length == 0) {
+                location.href = './main.html';
+            } else {
+                keyword = localStorage.getItem("userlocation") + " + " + localStorage.getItem("usercategory");
+                executeSearch(keyword);
+            }
         } else {
             addPagination();
         }
@@ -229,5 +233,5 @@ $(document).ready(function() {
     }
     setTimeout(function() {
         searchEvents();
-    }, 700);
+    }, 500);
 })
