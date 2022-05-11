@@ -138,7 +138,7 @@ function addPagination() {
     for(var i = 1; i <= totalPages; i++) {
         start= (i - 1) * 9;
         end = start + 9
-        let button = $("<button class='btn btn-primary page' type='submit' onclick='getSlice(\"" + i.toString() + "\")'> " + i.toString() + "</button>")
+        let button = $("<button class='btn page' type='submit' onclick='getSlice(\"" + i.toString() + "\")'> " + i.toString() + "</button>")
         $("#paginationBar").append(button)
 
         if (i == 1) {
@@ -219,9 +219,7 @@ $(document).ready(function() {
         console.log("get user info");
         getUserInfo()
     }
-})
 
-$(window).on('load', function(){
     setTimeout(function() {
         searchEvents();
     }, 100);

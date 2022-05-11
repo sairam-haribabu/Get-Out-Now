@@ -118,7 +118,7 @@ img {
     background-color: #D83F87 !important;
 }
  
-.pagination_section a:hover:not(.active) {
-    background-color: #031F3B;
-    color: white;
+.pagination_section page:hover:not(.active) {
+    /* background-color: #031F3B; */
+    color: #031F3B;
 }

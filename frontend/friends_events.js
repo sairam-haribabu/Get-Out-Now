@@ -38,6 +38,8 @@ function logOut(){
 function getFriendsEvents() {
     username = localStorage.getItem('username');
     sdk.friendseventsGet({'username': username}).then((response) => {
+        console.log("response");
+        console.log(response);
         events = response['data']['body'];
         console.log("E", events);
 
