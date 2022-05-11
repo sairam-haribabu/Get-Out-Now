@@ -120,11 +120,14 @@ function displayAllEvents(events) {
     }
 
     $("#display-block").append(row)
+    $(window).scrollTop(0);
 }
 
 
 function getSlice(page){
     $("#display-block").empty();
+    $(".active").removeClass("active");
+    $("#" + page).addClass("active");
     page = parseInt(page);
     start= (page - 1) * 9;
     end = start + 9;
@@ -139,7 +142,7 @@ function addPagination() {
     for(var i = 1; i <= totalPages; i++) {
         start= (i - 1) * 9;
         end = start + 9
-        let button = $("<button class='btn page' type='submit' onclick='getSlice(\"" + i.toString() + "\")'> " + i.toString() + "</button>")
+        let button = $("<button class='btn page' type='submit' id='" + i.toString() + "' onclick='getSlice(\"" + i.toString() + "\")'> " + i.toString() + "</button>")
         $("#paginationBar").append(button)
 
         if (i == 1) {
@@ -216,7 +219,9 @@ $(document).ready(function() {
         logOut();
     }
     if(localStorage.getItem('category') != null && localStorage.getItem('category') != "") {
-        $("#keyword").val(localStorage.getItem('category'))
+        // $("#keyword").val(localStorage.getItem('category'));
+        executeSearch(localStorage.getItem('category'));
+        return;
     }
     if(localStorage.getItem('usercategory').length == 0 || localStorage.getItem('userlocation').length == 0){
         console.log("get user info");

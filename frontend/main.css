@@ -114,9 +114,21 @@ img {
     margin-bottom: 50px;
 } 
 
-.page {
-    background-color: #D83F87 !important;
+.page:not(.active) {
+    background-color: #D83F87;
 }
+
+.page.active {
+    background-color: #bd3b78;
+}
+
+/* .page:not(.active) {
+    color: white;
+}
+
+.page .active {
+    color: #031F3B;
+} */
  
 .pagination_section page:hover:not(.active) {
     /* background-color: #031F3B; */
