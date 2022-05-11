@@ -229,5 +229,5 @@ $(document).ready(function() {
     }
     setTimeout(function() {
         searchEvents();
-    }, 500);
+    }, 700);
 })
