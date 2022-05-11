@@ -146,7 +146,7 @@ $(document).ready(function() {
 
             let eventRow = $("<div class='row'> </div>")
             for(i in eventsInfo) {
-                let div = $("<div class='col-md-4 event'> <div/>")
+                let div = $("<div class='col-md-3 event'> <div/>")
                 let imgsrc = eventsInfo[i]['photo']
                 let divImage = $("<div class='event-image'> <img src = '" + imgsrc + "' onclick='eventPage(\"" + eventsInfo[i]['eventid'] + "\")'>  <div/>")
                 $(div).append(divImage)

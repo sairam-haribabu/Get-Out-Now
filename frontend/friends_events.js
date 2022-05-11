@@ -47,8 +47,8 @@ function getFriendsEvents() {
         var allDisplayDiv = document.getElementById('display-block');
         allDisplayDiv.innerHTML = '';
 
-        console.log("L", events.length)
         var length = Object.keys(events).length
+        console.log("L", length)
         if(length > 0) {
             // DISPLAYING FRIEND'S EVENTS
             let i = -1;
@@ -81,10 +81,7 @@ function getFriendsEvents() {
                 $(div).append(divName2)
                 $(row).append(div)
             }
-
-            if(i == 0) {
-                $("#display-block").append(row)
-            }
+            $("#display-block").append(row)
         } else {
             let heading = $("<h4> No upcoming events found for your friends. </h4>")
             $("#display-block").append(heading)

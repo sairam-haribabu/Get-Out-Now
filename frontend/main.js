@@ -88,6 +88,7 @@ function displayEvents(events) {
     for(key in events) {
         if(key != 'all') {
             let heading = $("<h4> Search results based on " + key + "...</h4>")
+            $("#display-block").append($("<br>"))
             $("#display-block").append(heading)
             $("#display-block").append($("<br>"))
         }
@@ -129,12 +130,12 @@ function getSlice(page){
     end = start + 9;
     let e = totalEvents.slice(start, end);
     displayAllEvents(e);
+    
 }
 
 
 function addPagination() {
     totalPages = Math.ceil(totalEvents.length / 9);
-
     for(var i = 1; i <= totalPages; i++) {
         start= (i - 1) * 9;
         end = start + 9
@@ -164,14 +165,16 @@ function executeSearch(keyword) {
                 totalEvents = response["events"]["all"];
                 addPagination();
             } else {
-                // DISPLAYING USERS
-                displayUsers(response['users']);
-                // DISPLAYING EVENTS
-                console.log("Trying to get len of keys");
-                console.log(Object.keys(response['events']).length);
-                displayEvents(response['events']);
+                if(Object.keys(response['events']).length == 0 && response['users'].length == 0) {
+                    let heading = $("<h4> No search results found. </h4>")
+                    $("#display-block").append(heading)
+                } else {
+                    // DISPLAYING USERS
+                    displayUsers(response['users']);
+                    // DISPLAYING EVENTS
+                    displayEvents(response['events']);
+                }
             }
-            
         }
     })
     .catch((error) => {
@@ -219,8 +222,7 @@ $(document).ready(function() {
         console.log("get user info");
         getUserInfo()
     }
-
     setTimeout(function() {
         searchEvents();
-    }, 100);
+    }, 500);
 })

@@ -94,19 +94,21 @@ function showEventDetails(response) {
         $("#attraction-block").append(rowDiv)
     }
 
-    if(response['attendees'].length > 0) {
-        let heading = $("<h3> FRIENDS ATTENDING </h3>")
+    if(response['attendees'].length > 0 && !(response['attendees'].length == 1 && response['attendees'][0]['username'] == username)) {
+        let heading = $("<h3> PEOPLE ATTENDING </h3>")
         $("#friends-block").append(heading)
 
         let friendRow = $("<div class='row'> </div>")
         for(i in response['attendees']) {
-            let div = $("<div class='col-md-2 friend'> <div/>")
-            let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + response['attendees'][i]['photo']
-            let divImage = $("<div> <img src = '" + imgsrc + "' class='friend-image' onclick='friendProfile(\"" + response['attendees'][i]['username'] + "\")'>  <div/>")
-            $(div).append(divImage)
-            let divName = $("<div class='friend-name'>" + response['attendees'][i]['name'] +  " <div/>")
-            $(div).append(divName)
-            $(friendRow).append(div)
+            if(username != response['attendees'][i]['username']) {
+                let div = $("<div class='col-md-2 friend'> <div/>")
+                let imgsrc = "https://ccbduserphotobucket.s3.us-east-1.amazonaws.com/" + response['attendees'][i]['photo']
+                let divImage = $("<div> <img src = '" + imgsrc + "' class='friend-image' onclick='friendProfile(\"" + response['attendees'][i]['username'] + "\")'>  <div/>")
+                $(div).append(divImage)
+                let divName = $("<div class='friend-name'>" + response['attendees'][i]['name'] +  " <div/>")
+                $(div).append(divName)
+                $(friendRow).append(div)
+            }
         }
         $("#friends-block").append(friendRow)
     }
