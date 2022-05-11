@@ -192,7 +192,7 @@ function searchEvents() {
     $("#paginationBar").empty();
     if (keywordEl.value.length == 0) { // most general search
         if (totalEvents == null) {
-            if (localStorage.getItem('userLocation').length == 0 && localStorage.getItem('usercategory').length == 0) {
+            if (localStorage.getItem('userLocation') == "" && localStorage.getItem('usercategory') == "") {
                 location.href = './main.html';
             } else {
                 keyword = localStorage.getItem("userlocation") + " + " + localStorage.getItem("usercategory");

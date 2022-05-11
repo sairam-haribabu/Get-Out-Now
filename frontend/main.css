@@ -122,6 +122,10 @@ img {
     background-color: #bd3b78;
 }
 
+.page {
+    color: white;
+}
+
 /* .page:not(.active) {
     color: white;
 }
@@ -129,8 +133,7 @@ img {
 .page .active {
     color: #031F3B;
 } */
- 
+/*  
 .pagination_section page:hover:not(.active) {
-    /* background-color: #031F3B; */
     color: #031F3B;
-}
+} */
